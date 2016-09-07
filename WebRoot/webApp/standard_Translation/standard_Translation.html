@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>标准翻译</title>
+<link rel="stylesheet" type="text/css" href="standard_Translation.css">
+<script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
+</head>
+
+<body>
+	<div id="head">
+		<img id="back" src="img/back2.png" onclick="pre()"><Strong
+			id="title" class="name">标准翻译服务</Strong>
+	</div>
+
+	<div id="context">
+		<div id="original">
+			<div class="text1">
+				<img src="img/001_06.png"></img>
+				<div class="text12">
+					<p>国家标准馆提供英、德、法、日、俄、等20多中语言与汉语的标准互译服务。</p>
+				</div>
+			</div>
+			<div class="text2">
+				<img src="img/001_06.png"></img>
+				<div class="text12">
+					<p>
+						典型案例：<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我馆与中钢集团、中国核工程有限公司、中国航天科技集团、中国机电商会、日立、壳牌、海尔等诸多国内外大型企业事业单位建立了长期的标准翻译合作。
+					</p>
+				</div>
+			</div>
+			<div class="text3">
+				<img src="img/wonder.png"></img>
+				<div class="text12">
+					<p>
+						联系人：高燕 <br>电话：010-5881349 <br>传真：010-5881349 <br>邮箱：<span
+							class="email">gaoyan@cnis.gov.cn</span>
+					</p>
+				</div>
+			</div>
+			<div id="tips" onclick="getMore()">了解更多...</div>
+		</div>
+		<div id="more">
+			<p>标准翻译服务开展与20世纪70年代，是全国最早开展的机构之一，核心竞争力包括：</p>
+			<div class="text4">
+				<img src="img/tick.png"></img>
+				<p class="detial">
+					专业的翻译专家团队 <br>国家标准馆的翻译专家队伍主要由语言专家和行业专家组成，每一份翻译工作有语言专家和行业专家配合完成，最大限度保障翻译的水准。
+				</p>
+			</div>
+			<div class="text5">
+				<img src="img/tick.png"></img>
+				<p class="detial">
+					海量的译文数据资源 <br>2009年，国家标准馆推出了专门面向翻译服务的国家标准馆译文数据库，海量的译文资源成为了翻译服务的“活字典”，为翻译服务质量提供了文献基础。
+				</p>
+			</div>
+			<div class="text6">
+				<img src="img/tick.png"></img>
+				<p class="detial">
+					先进的翻译技术平台 <br> 2012年，为改进翻译服务的效率国家标准馆引进了先进的
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(function() {
+
+		var height = $(window).height(), width = $(window).width();
+		console.log(height);
+		if(height > 600){
+		
+		$("#tips").css("position","fixed");
+		$("#tips").css("bottom","10px");
+		
+		}
+	});
+	
+	function getMore() {
+		$('#more').css("display", "block");
+		$('#original').css("display", "none");
+		$('#back').css("display", "block");
+		$('#title').css("margin-left", "-30px");
+	}
+
+	function pre() {
+		$('#more').css("display", "none");
+		$('#original').css("display", "block");
+		$('#back').css("display", "none");
+		$('#title').css("margin-left", "0");
+	};
+</script>
+</html>

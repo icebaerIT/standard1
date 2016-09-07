@@ -1,0 +1,72 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	height: 100%;
+	width: 100%;
+	font-family: "microsoft YaHei";
+	background-color:  rgb(235,235,235);
+}
+input[type="button"], input[type="submit"], input[type="reset"] {
+	-webkit-appearance: none;
+}
+textarea { 
+	-webkit-appearance: none;
+}
+li{
+	list-style: none;
+	padding-top: 5px;
+}
+header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	line-height:50px;
+	text-align: center;
+	background-color: white;
+	font-size: 25px;
+	color:#1657b7;
+	z-index:9;
+}
+.back{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    width: 30px;
+}
+.old_info{
+	margin-top: 50px;
+}
+.title{
+	height: 40px;
+    line-height: 40px;
+}
+.title img{
+	float: left;
+	padding:  5px;
+}
+.title span{
+	display: inline-block;
+}
+.old_list,.new_list{
+	background-color: white;
+	padding: 0 10px 10px 10px;
+}
+.old_list div:nth-child(1),
+.new_list div:nth-child(1) {
+	width: 46%;
+}
+.old_list div:nth-child(2),
+.new_list div:nth-child(2) {
+	width: 54%;
+}
+.new_list div,.old_list div{
+	float: left;
+}
+li:after{
+	content: "";
+	display:block;
+	clear: both;
+}

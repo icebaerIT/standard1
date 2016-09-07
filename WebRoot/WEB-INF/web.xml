@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name></display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GetPortServlet</servlet-name>
+    <servlet-class>servlet.GetPortServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GetPortServlet</servlet-name>
+    <url-pattern>/servlet/GetPortServlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+    <servlet>
+        <servlet-name>advancedSearch</servlet-name>
+        <servlet-class>servlet.advancedSearch</servlet-class>
+    </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserLoginStatus</servlet-name>
+    <servlet-class>servlet.UserLoginStatus</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>IntoSimpleSearch</servlet-name>
+    <servlet-class>servlet.IntoSimpleSearch</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>IntoAdvencedSearch</servlet-name>
+    <servlet-class>servlet.IntoAdvencedSearch</servlet-class>
+  </servlet>
+
+
+
+    <servlet-mapping>
+        <servlet-name>advancedSearch</servlet-name>
+        <url-pattern>/servlet/advancedSearch</url-pattern>
+    </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserLoginStatus</servlet-name>
+    <url-pattern>/servlet/UserLoginStatus</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IntoSimpleSearch</servlet-name>
+    <url-pattern>/servlet/IntoSimpleSearch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IntoAdvencedSearch</servlet-name>
+    <url-pattern>/servlet/IntoAdvencedSearch</url-pattern>
+  </servlet-mapping>
+</web-app>
+

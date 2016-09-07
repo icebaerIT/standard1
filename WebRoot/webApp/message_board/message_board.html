@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>建言献策</title>
+<link rel="stylesheet" type="text/css" href="message_board.css">
+<script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
+</head>
+
+<body>
+	<div id="head"><img id="back" src="img/back2.png" onclick="pre()"><span class="name">建言献策</span></div>
+	<textarea id="msg_board" name="msg_board" id="" cols="30" rows="10"
+		placeholder="请在这里留下你宝贵的意见与建议" onKeyDown="gbcount(this.value,500);"
+		onKeyUp="gbcount(this.value,500);"></textarea>
+	<p>
+		你还可以输入<span id="number">500</span>个字
+	</p>
+	<button onclick="release()">发布</button>
+</body>
+<script>
+//统计输入字符个数
+	function gbcount(message, total) {
+		var remain;
+		if (message.length > total || message.length == total) {
+			remain = 0;
+			$("#msg_board").attr("disabled", "ture");
+		} else {
+			remain = total - message.length;
+		}
+		/* console.log(remain); */
+		$("#number").html(remain);
+	}
+//发布
+	function release(){
+	alert("发布成功！");
+	window.location.href = "/standard/webApp/personal_Center/personal_Center.html";
+	}
+//返回上一页
+function pre(){
+	history.go(-1);
+}
+</script>

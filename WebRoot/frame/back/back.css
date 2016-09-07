@@ -1,0 +1,16 @@
+body{
+	padding-top:30px; 
+}
+#top{
+	height:30px;
+	width:100%;
+	background-color:#fff;
+	position: fixed;
+	top:0px;		
+}
+
+#top>span{
+	font-size:15px;
+ 	line-height: 30px;
+	color:#78cdf8;	
+}

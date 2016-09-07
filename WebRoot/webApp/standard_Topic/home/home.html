@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>国家标准馆</title>
+<link rel="stylesheet" href="loading.css" type="text/css"></link>
+<link rel="stylesheet" href="home.css" type="text/css"></link>
+</head>
+
+<body>
+	<div class="topic" onclick="openTopic(1)">
+		<img src="img/ec5eb7df1f1376befb5e88a7e645db9f.jpg"></img>
+		<div class="mask">
+			<div>
+				<p>食品检测专题</p>
+			</div>
+		</div>
+	</div>
+	<div class="topic" onclick="openTopic(2)">
+		<img src="img/jiuzai.JPG"></img>
+		<div class="mask">
+			<div>
+				<p>抗震救灾专题</p>
+			</div>
+		</div>
+	</div>
+	<div class="topic" onclick="openTopic(3)">
+		<img src="img/nong.png"></img>
+		<div class="mask">
+			<div>
+				<p>农产品专题</p>
+			</div>
+		</div>
+	</div>
+	<div class="topic" onclick="openTopic(4)">
+		<img src="img/296628abd477da826acb1c657e71fd48.jpg"></img>
+		<div class="mask">
+			<div>
+				<p>流行疫病防治专题</p>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div id="loading">
+		<div class="sk-fading-circle">
+			<div class="sk-circle1 sk-circle"></div>
+			<div class="sk-circle2 sk-circle"></div>
+			<div class="sk-circle3 sk-circle"></div>
+			<div class="sk-circle4 sk-circle"></div>
+			<div class="sk-circle5 sk-circle"></div>
+			<div class="sk-circle6 sk-circle"></div>
+			<div class="sk-circle7 sk-circle"></div>
+			<div class="sk-circle8 sk-circle"></div>
+			<div class="sk-circle9 sk-circle"></div>
+			<div class="sk-circle10 sk-circle"></div>
+			<div class="sk-circle11 sk-circle"></div>
+			<div class="sk-circle12 sk-circle"></div>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript" src="../../../frame/jquery/jquery-2.1.0.js"></script>
+	<script>
+		$(function() {
+
+			var height = $(window).height(), width = $(window).width();
+			var each_height = height * 0.25*0.95;
+	/* console.log("height"+height+"width"+width); */
+			$(".topic img").width(width*0.95);
+			$(".topic .mask div").width(width*0.95);
+			$(".topic img").height(each_height);
+			$(".topic ").height(each_height);
+			$(".topic ").css("margin-top",height*0.25*0.05);
+			$(".topic ").css("margin-left",width*0.025); 
+			
+		});
+		function openTopic(i){
+		var parameter;
+		  if(i == 1){
+		  parameter= ["00000000-0000-0000-0000-000000060002"];
+		  }else if(i == 2){
+		  parameter= ["00000000-0000-0000-0000-000000060005"];
+		  }else if(i == 3){
+		  parameter= ["00000000-0000-0000-0000-000000060003"];
+		  }else if(i == 4){
+		  parameter= ["00000000-0000-0000-0000-000000060004"];
+		  }
+		  $("#loading").show();
+		  window.location.href = "/standard/webApp/standard_Topic/topic/topic.html?parameter="
+					+ parameter;
+		}
+	</script>
+</body>
+</html>

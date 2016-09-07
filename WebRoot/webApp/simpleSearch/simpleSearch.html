@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>简单查询</title>
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">    
+<!-- 	<link rel="stylesheet" href="../../frame/back/back.css" type="text/css"></link> -->
+    <link rel="stylesheet" type="text/css" href="css/simpleSearch.css">
+	<link rel="stylesheet" href="css/loading.css" type="text/css">
+  <link rel="stylesheet" href="css/dropload.css" type="text/css"></link></head>
+  
+  <body>
+  	<!-- <div id="top"    ><span onclick="javascript :history.back(-1);">返回</span></div> -->
+  	<div id="loading">
+  	   <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+  	</div>
+  	<header>
+  		<div class="head">
+  			<img class="back" src="img/back2.png" onclick="back()"></img>
+			<strong>简单查询</strong>
+  		</div>
+		<div id="searchtext">
+		 	<input id="serachkeyword"  type="text" placeholder="请输入关键字"    autocomplete="off" maxlength="255">
+			 <button id="Dsearch" onclick="Dsearch()">筛选</button><button id="search" onclick="serach(0)">查询</button>
+		 </div>
+	</header>
+	<div id="background"></div>
+	<!-- <div id="thereload" onclick="javascript:document.getElementById('theDetails').contentWindow.location.reload(true);">刷新</div>
+ -->
+ 	<div id="body">
+<!-- 	<iframe id="theDetails" src="../details/details.html?id=498424">
+	</iframe> -->
+<!-- 			<div id="head"><div id="title"><span>简单查询</span></div> -->
+<!-- 			<div id="searchtext">
+		 		<input id="serachkeyword" type="text" placeholder="请输入查询词或者标准号"    autocomplete="off" maxlength="255">
+			 	<button id="Dsearch" onclick="Dsearch()">筛选</button><button id="search" onclick="serach(0)">查询</button>
+		 	</div> -->
+	 		</div>
+	 		<div id="serachs">
+	 		<ul id="search-list">
+			<!-- <li>
+				<a href="../details/details.html?id=498424">
+					<div>
+						<p>GB/T 14926.22-2001<span class="state state-green">现行</span></p>	
+					</div>
+					<div>
+						<p>
+							<span>中文名称:</span>实验动物  小鼠肝炎病毒检测方法
+						</p>
+					</div>
+					<div>
+						<p>
+							<span>英文名称:</span>Laboratory animal--Method for examination of mouse hepatitis virus(MHV)
+						</p>
+					</div>
+				</a>
+			</li> -->
+	 		</ul>
+	 		<div id="nodata" style="display:none;line-height:500px; text-align: center;color: gray;font-size: 25px;">没有查到数据</div>
+	 		<div class="pull" style="display: none;">没有更多数据了</div>
+<!-- 	 		<div id="page">
+				<div>			 		
+					<input id="thePage" type="text" maxlength="100" autocomplete="on"  oninput="onlyNum()"/>
+			 		<span>/</span>
+			 		<span id="totalPage">38</span>
+			 		<button id="go" onclick="serach(1)" >go</button>
+			 	</div>
+	 		</div> -->
+	 		</div>
+	 		<!-- <div id="history">
+		 		<div id="history-title">查询历史</div>
+		 		<div id="history-list">
+		 		<ul>
+		 			<li>asdfadf</li>
+		 			<li>asfsdf</li>
+		 		</ul>
+		 		</div>
+	 		</div> -->
+	 	</div> 	
+    <script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="js/dropload.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/simpleSearch.js"></script>
+<!--   	<script type="text/javascript" src="../../frame/back/back.js"></script> -->
+  </body>
+</html>

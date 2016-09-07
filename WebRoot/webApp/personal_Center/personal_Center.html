@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>用户中心</title>
+<link rel="stylesheet" type="text/css" href="personal_Center.css">
+</head>
+
+<body>
+	<div id="context">
+		<div class="list" id="account" onclick="show_detail()">
+			<img class="icon" id="acc-icon" src="" alt=""><span id="userName"></span><img class="next" id="acc-next" src="img/next.png" alt=""
+				onclick="show_detail()">
+		</div>
+		<div class="list" onclick="bind_Account()">
+			<img class="icon" src="img/cube.png" alt="">账号绑定<img
+				class="next" src="img/next.png" alt="" onclick="bind_Account()">
+		</div>
+		<div class="list msg" onclick="myNews()">
+			<img class="icon" src="img/text-message.png" alt="">我的消息<img
+				class="next" src="img/next.png" alt="" onclick="myNews()">
+		</div>
+		<div class="list msg" onclick="track()">
+			<img class="icon" src="img/text-message.png" alt="">跟踪列表<img
+				class="next" src="img/next.png" alt="" onclick="track()">
+		</div>
+		<div class="list" onclick="msg_board()">
+			<img class="icon" src="img/pencil.png" alt="">建言献策<img
+				class="next" src="img/next.png" alt="" onclick="msg_board()">
+		</div>
+	</div>
+
+	<!-- <script type="text/javascript" src="personal_Center.js"></script> -->
+
+</body>
+<!-- <script>
+	//跳转到个人信息
+	function show_detail() {
+		window.location.href = "/standard/webApp/personal_info/personal_info.html";
+	}
+	//跳转到账户绑定界面
+	function bind_Account() {
+		window.location.href = "/standard/webApp/account/account.html";
+	}
+	//跳转到留言界面
+	function msg_board() {
+		window.location.href = "/standard/webApp/message_board/message_board.html";
+	}
+	//跳转到跟踪列表界面
+	function track() {
+		window.location.href = "/standard/webApp/track/track.html";
+	}
+	//跳转到我的消息界面
+	function myNews() {
+		window.location.href = "/standard/webApp/myNews/myNews.html";
+	}
+</script> -->
+<script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="personal_Center.js"></script>
+</html>

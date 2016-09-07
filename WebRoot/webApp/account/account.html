@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>账户绑定</title>
+<link rel="stylesheet" type="text/css" href="account.css">
+</head>
+
+<body>
+	<div id="head">
+		<img id="back" src="img/back2.png" onclick="pre()"><Strong
+			class="name">账号绑定</Strong>
+	</div>
+	<div class="bind_account">
+		<img class="pic" src="img/weixin.jpg" alt=""> <img class="pic" src="img/bind.gif" alt="">
+		<img class="pic" src="img/tubiao.PNG">
+	</div>
+	<div class="msg_account">
+		<input type="text" class="msg" id="name" placeholder="标准馆账号">
+		<input type="password" class="msg" id="password" placeholder="密码">
+	</div>
+	<div class="confirm" onclick="acc_bind()">
+		<button>绑定</button>
+	</div>
+	<div class="tips">
+		<img class="pic" src="img/exclamation-red.png" alt="" id="exclamation">
+		<div id="tips_text">
+			<p id="text">此功能是将微信账号与中国标准化研究院国家标准馆账号进行逆行绑定，以便通过微信使用标准跟踪定制、信息集成、网络服务等部分功能。</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="account.js"></script>
+</html>

@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+
+body {
+	width: 100%;
+	height: 100%;
+	font-family:  "microsoft YaHei";
+	background-color: rgb(235, 235, 235);
+}
+
+body,div,img,p {
+	margin: 0;
+	padding: 0;
+}
+
+.topic {
+	position: relative;
+	overflow: hidden;
+	float: left;
+}
+
+.topic  img {
+	opacity: 1;
+	overflow: hidden;
+}
+
+.mask {
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	font-family: "微软雅黑";
+}
+
+.topic .mask {
+	height: 100%;
+}
+
+.topic .mask  div {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: rgba(255, 255, 255, 0.4);
+	height: 50%;
+}
+
+.topic .mask div p {
+	color: rgba(1, 1, 1, 1);
+	padding-left: 10px;
+	padding-top: 5%;
+}
+#loading{
+	background-color: #efefef;
+	position: fixed;
+	z-index: 999;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top:0;
+}
