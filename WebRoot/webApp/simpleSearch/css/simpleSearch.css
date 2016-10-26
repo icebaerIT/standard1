@@ -303,7 +303,6 @@ header strong {
 .state{
     display: inline-block;
     margin-left: 10px;
-    background-color: rgb(1, 192, 1);
     text-align: center;
     color: white;
     border-radius: 5px;

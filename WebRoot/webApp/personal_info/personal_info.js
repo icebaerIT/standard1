@@ -59,5 +59,7 @@ function userInfo1() {
 
 // 返回上一页
 function pre() {
-	history.go(-1);
+	if(confirm("确定返回?")){
+		history.go(-1);
+	}
 }

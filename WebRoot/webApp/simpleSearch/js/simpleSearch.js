@@ -51,8 +51,15 @@ function RequestWebService(parameterList) {
 				var thelist = "";
 				console.log(data);	
 				for(var theData in data){
+					var now = "现行";
+					var now_Color = "state-green";
+					switch(data[theData]["记录状态"]){
+					case "N":;
+					case "A":now = "现行";break;
+					default:now = "废止",now_Color = "state-red";break;
+					}
 					thelist +="<li class='opacity'><a href='../details/details.html?id="+data[theData]["记录标识符"]+"'>"+
-		 			"<div><p>"+data[theData]["文献号"]+"<span class='state state-green'>现行</span></p></div>"+
+		 			"<div><p>"+data[theData]["文献号"]+"<span class='state "+now_Color+"'>"+now+"</span></p></div>"+
 		 			"<div><p><span>中文题名:</span>"+data[theData]["中文题名"]+"</p></div>"+
 		 			"<div><p><span>英文题名:</span>"+data[theData]["英文题名"]+"</p></div>"+
 		 			"</a></li>";
