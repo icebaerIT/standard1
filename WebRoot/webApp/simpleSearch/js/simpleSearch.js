@@ -5,32 +5,20 @@ var parameterList = new Array();
 parameterList[4] = 10;
 dropload_me = $('#search-list').dropload.me;
 var input_keyword = null;
+
+
+function isNull( str ){
+    if ( str == "" ) return true;
+    var regu = "^[ ]+$";
+    var re = new RegExp(regu);
+    return re.test(str);
+}
+
 function back(){
 	history.back(-1);
 }
-/*function lose_blur(){
-		input_keyword = $("#serachkeyword").val();
-	setTimeout(function(){
-		var serach = sessionStorage.getItem("simpleSearch_keyword");
-		if(serach != null && serach != "" && !isNull(serach) ){
-			$("#serachkeyword").val(serach);
-			$("#serachkeyword").css({
-				"font-size": "30px",
-				"margin-left":"25px",
-				"margin-top": "0px",
-			});
-			$("#serachs").show();
-			$("#Dsearch").show();
-		}
-	},1000);
-	console.log("失去焦点");
 
-}*/
 function RequestWebService(parameterList) {
-		
-		
-	
-
 //		parameterList = ["","","","","Q","","","","","","","1","10"];
 //		var portName = "advencedSearch";
 //		returnType = "QueryResult";
@@ -53,7 +41,7 @@ function RequestWebService(parameterList) {
 				
 				var aa = $.parseJSON(data);
 				console.log(aa[0]);
-				totalPage = aa[0].totalPage
+				totalPage = aa[0].totalPage;
 				$("#totalPage").html(aa[0].totalPage);
 				console.log("总页数"+aa[0].totalPage);
 				$("#thePage").attr("value",aa[0].pageIndex);
@@ -61,12 +49,12 @@ function RequestWebService(parameterList) {
 
 				var data = $.parseJSON(aa[0].resultStr);
 				var thelist = "";
-				console.log(data);
+				console.log(data);	
 				for(var theData in data){
 					thelist +="<li class='opacity'><a href='../details/details.html?id="+data[theData]["记录标识符"]+"'>"+
 		 			"<div><p>"+data[theData]["文献号"]+"<span class='state state-green'>现行</span></p></div>"+
-		 			"<div><p><span>中文名称:</span>"+data[theData]["中文题名"]+"</p></div>"+
-		 			"<div><p><span>英文名称:</span>"+data[theData]["英文题名"]+"</p></div>"+
+		 			"<div><p><span>中文题名:</span>"+data[theData]["中文题名"]+"</p></div>"+
+		 			"<div><p><span>英文题名:</span>"+data[theData]["英文题名"]+"</p></div>"+
 		 			"</a></li>";
 					
 				}
@@ -98,8 +86,6 @@ function RequestWebService(parameterList) {
 					//保存总页面thePage
 					sessionStorage.setItem("simpleSearch_totalPage",totalPage);
 					console.log("已保存数据");
-/*					dropload_me.noData(false);*/
-	/*				setTimeout(function(){dropload_me.unlock();},3000);*/
 				}
 
 				console.log("展示");
@@ -150,16 +136,10 @@ $('#search-list').dropload({
 			$(".pull").fadeIn(1000);
 			$(".pull").fadeOut(1000);
     		me.resetload();
-/*    		me.lock();*/
-/*    		console.log("锁定拉读取");*/
     		console.log("没有更多了");
     	}
     	
     },
-/*    error :function(){
-    	console.log("加载出错!!!");
-    	me.resetload();
-    }*/
 	});
 
 function serach(type){
@@ -168,7 +148,6 @@ function serach(type){
 	console.log("查询开始");
 	var serach = $("#serachkeyword").val();
 	var theserach  = sessionStorage.getItem("simpleSearch_keyword");
-/*	$("#loading").show();*/
 //	存历史记录
 	console.log("关键字"+serach);
 	console.log("之前的关键字"+theserach);
@@ -274,7 +253,12 @@ $(document).on("touchend","#serachkeyword",function(){
 	});
 });
 
-
+//对历史记录进行读取比较
+function history(){
+	
+	
+	
+}
 
 //切换为替换
 $(document).on("touchend","#search",function(){

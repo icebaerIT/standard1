@@ -8,6 +8,12 @@ import javax.servlet.http.HttpSession;
 
 import DataBase.ConnectOracle;
 
+ 
+/**
+ * @author joseber
+ * 绑定临时账户
+ *
+ */
 public class TemBind {
 public static boolean temBinding(HttpSession session){
 		String openid = (String) session.getAttribute("openid");

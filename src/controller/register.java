@@ -19,7 +19,12 @@ import DataBase.ConnectOracle;
 
 
 
-
+/**
+ * @author joseber
+ * 
+ * 建立临时的账户
+ *
+ */
 public class register {
 	public static void registering(HttpSession session){
 		// TODO Auto-generated method stub 

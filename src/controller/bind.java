@@ -12,7 +12,7 @@ import DataBase.ConnectOracle;
 public class bind {
 	
 	/** 
-	 * 方法简述：
+	 * 方法简述：绑定账户
 	 * @author 常景胜
 	 * @param args:openid
 	 * @param session

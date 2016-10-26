@@ -68,7 +68,7 @@ public class GetPortServlet extends HttpServlet {
 		String returnType = request.getParameter("returnType");
 		String returnPackage = "cn.gov.cnis.cssn.wssort.xsd."+ returnType;
 		
-		//��ȡconfig���
+		//初始化接口密码和账户
 		ResourceBundle Bundle = ResourceBundle.getBundle("config.AppConfig");
 		String password = Bundle.getString("password");
 		String orgLoginName = Bundle.getString("orgLoginName");
@@ -77,17 +77,8 @@ public class GetPortServlet extends HttpServlet {
 		
 		String[] parameterList1={orgLoginName,password,ukeyId,orgCode};
 		
-		//��ȡ���ݲ���
-		
+		//获取并组合前端发送过来的数据	
 		Object[] parameterList2 =request.getParameterValues("parameterList");
-		
-/*		List lists = new ArrayList(Arrays.asList(parameterList1));
-		lists.addAll(JSONArray.fromObject(parameterList2));
-		Object[] parameterList = lists.toArray();
-		
-		
-*/
-		
 		Object[] parameterList = (Object[]) ArrayUtils.addAll(parameterList1, parameterList2);	
 		
 		
@@ -99,7 +90,7 @@ public class GetPortServlet extends HttpServlet {
 		options.setTo(targetEPR);
 		options.setTimeOutInMilliSeconds(100000L);
 		
-		//funcNameΪ��Ҫ���õķ������
+		
 		QName opAddEntry = new 	QName(Bundle.getString("WS_QNAME"),portName);
 			
 		Class[] classes;
@@ -109,6 +100,18 @@ public class GetPortServlet extends HttpServlet {
 			String returnValue ;//����ֵ����ݷ�����ͬ�������ķ���ֵ����
 			returnValue = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);//���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry, args, classes)[0]);				
 			out.write(returnValue);
+			break;
+		case "getStandardDetail":
+			Map<String,Object> regetStandardDetail = new HashMap<String,Object>();
+			regetStandardDetail.put("star", "black");
+			if(session.getAttribute("ID")!=null){//判断ＩＤ是否为空,如果不为空通过
+				regetStandardDetail.put("star", "light");
+			}
+			classes = new Class[] { String.class };
+			String returngetStandardDetail ;//����ֵ����ݷ�����ͬ�������ķ���ֵ����
+			returngetStandardDetail = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);//���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry, args, classes)[0]);
+			regetStandardDetail.put("data", returngetStandardDetail);
+			out.write(JSONObject.fromObject(regetStandardDetail).toString());
 			break;
 		case "setUserTracking":	
 			System.out.println("=========setUserTracking==========");
@@ -185,18 +188,20 @@ public class GetPortServlet extends HttpServlet {
 			out.write(JSONArray.fromObject(TopicCate).toString());
 			break;
 		case "TrsStandard": break;
-		case "UserAccountInfo": 	
-			if(session.getAttribute("ID") == null){
-				out.write("false");
-			} else {
+		case "UserAccountInfo": //个人中心获取基本信息	
+			//if(session.getAttribute("ID") == null){
+				//out.write("false");
+			//} else 
+			if(true){
 				Object[] UserID = { session.getAttribute("ID") };
 				String userInfoStr = (String) session.getAttribute("userInfo");
 				JSONObject userInfoJO = JSONObject.fromObject(userInfoStr);
 				String url = userInfoJO.getString("headimgurl");
+				//String url = "http:\\/\\/wx.qlogo.cn\\/mmopen\\/cPCNP1v1wjt2eic09JIvHKtME1exh1w1Ekwa3YxEJKovXYXB4ZTUbjXWgPzz07tQVkibgnnyl93evhf20gDgW9hbeUcnficUficl\\/0";
 
 				Map<String, Object> userInfomation = new HashMap<String, Object>();
 				userInfomation.put("url", url);
-				// Object[] UserID = {"xiaoya_0822"};
+				//Object[] UserID = {"xiaoya_0822"};
 				Object[] UserAccountInfoList = (Object[]) ArrayUtils.addAll(
 						parameterList1, UserID);
 				classes = new Class[] { UserAccountInfo[].class };

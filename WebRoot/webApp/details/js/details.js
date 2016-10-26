@@ -65,7 +65,7 @@ $(document).ready(function(){
 	$("#loading").show();
    var id =  getUrlParam("id");
    var portName = "getStandardDetail";
-   var returnType = "base";
+   var returnType = "getStandardDetail";
    $.ajax({
    	url: '../../servlet/GetPortServlet',
    	type: 'POST',
@@ -80,8 +80,11 @@ $(document).ready(function(){
    })
    .done(function(data) {
 	   if(data != null && data != ""){
-		   	console.log(data);
-			dealData(data);
+		   	console.log(data.star);
+		   	if(data.star ==="black"){
+		   		document.getElementById("star").src = "img/blackStar.png";
+		   	}
+			dealData($.parseJSON(data.data));
 	   }else{
 		   	alert("数据不存在");
 	   }
@@ -132,7 +135,8 @@ function collect(){
 					   		if(confirm("你的账户未绑定,需要绑定点确定")){
 					   			window.location.href = "/standard/webApp/account/account.html";
 					   		}
-					   		;break;
+					   		;
+					   		break;
 					   	default:alert("未知情况");break;
 					   	}
 				   }else{
