@@ -1,5 +1,5 @@
 $(function() {
-
+	alert("333");
 	userInfo();
 });
 
@@ -9,8 +9,7 @@ function userInfo() {
 	var portName = "getUserAccountInfo";
 	var returnType = "UserAccountInfo";
 
-	$
-			.ajax({
+	$.ajax({
 				type : "POST",
 				url : "../../servlet/GetPortServlet",
 				data : {
@@ -25,7 +24,10 @@ function userInfo() {
 					list = $.parseJSON(data);
 					length = list.length;
 					console.log(list);
-					var url = list[0].url;
+					var url = "noImg";
+					if(list[0].url != null){
+						url = list[0].url;
+					};
 //					var url = "http:/\/wx.qlogo.cn\/mmopen\/cPCNP1v1wjt2eic09JIvHKtME1exh1w1Ekwa3YxEJKovXYXB4ZTUbjXWgPzz07tQVkibgnnyl93evhf20gDgW9hbeUcnficUficl\/0";
 					var newurl = url.substring(0, url.length - 2) + "/46";
 					newurl = url.replace(/\\/g, "");

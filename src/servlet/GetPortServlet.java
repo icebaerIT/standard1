@@ -189,10 +189,9 @@ public class GetPortServlet extends HttpServlet {
 			break;
 		case "TrsStandard": break;
 		case "UserAccountInfo": //个人中心获取基本信息	
-			//if(session.getAttribute("ID") == null){
-				//out.write("false");
-			//} else 
-			if(true){
+		if(session.getAttribute("ID") == null){
+				out.write("false");
+		} else{
 				Object[] UserID = { session.getAttribute("ID") };
 				String userInfoStr = (String) session.getAttribute("userInfo");
 				JSONObject userInfoJO = JSONObject.fromObject(userInfoStr);
