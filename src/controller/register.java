@@ -26,7 +26,7 @@ import DataBase.ConnectOracle;
  *
  */
 public class register {
-	public static void registering(HttpSession session){
+	public static Boolean registering(HttpSession session){
 		// TODO Auto-generated method stub 
 					String[] a = new String[50];
 					String openID = (String) session.getAttribute("openid");
@@ -64,12 +64,15 @@ public class register {
 						if(str.equals("1")){
 							TemBind.temBinding(session);
 							System.out.println("注册成功");
+							return true;
 						}else{
 							System.out.println("注册失败");
+							return false;
 						}
 					} catch (AxisFault e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						return false;
 					}
 					
 					

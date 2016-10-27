@@ -17,7 +17,7 @@ import DataBase.ConnectOracle;
  *
  */
 public class getLoginName {
-public static Map<String, Object> getLoginNameing(HttpSession session){
+	public static Map<String, Object> getLoginNameing(HttpSession session){
 		
 		String openid = (String) session.getAttribute("openID");
 /*		String openid = "obFKEt1U4KmC2E7Cht75WZJHJch8";*/

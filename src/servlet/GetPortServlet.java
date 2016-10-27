@@ -25,7 +25,7 @@ import org.apache.axis2.rpc.client.RPCServiceClient;
 import org.apache.commons.lang.ArrayUtils;
 
 import controller.bind;
-
+import controller.register;
 import DataBase.theMySQL;
 
 
@@ -196,10 +196,12 @@ public class GetPortServlet extends HttpServlet {
 				String userInfoStr = (String) session.getAttribute("userInfo");
 				JSONObject userInfoJO = JSONObject.fromObject(userInfoStr);
 				String url = userInfoJO.getString("headimgurl");
+				String nickname = userInfoJO.getString("nickname");
 				//String url = "http:\\/\\/wx.qlogo.cn\\/mmopen\\/cPCNP1v1wjt2eic09JIvHKtME1exh1w1Ekwa3YxEJKovXYXB4ZTUbjXWgPzz07tQVkibgnnyl93evhf20gDgW9hbeUcnficUficl\\/0";
 
 				Map<String, Object> userInfomation = new HashMap<String, Object>();
 				userInfomation.put("url", url);
+				userInfomation.put("nickname", nickname);
 				//Object[] UserID = {"xiaoya_0822"};
 				Object[] UserAccountInfoList = (Object[]) ArrayUtils.addAll(
 						parameterList1, UserID);
@@ -213,14 +215,15 @@ public class GetPortServlet extends HttpServlet {
 			break;
 		case "UserAudit": break;
 		case "UserAuditItem": break;
-case "base_loginName":
+		case "base_loginName":
 			
 			classes = new Class[] { String.class };
 			String returnName;
 			returnName = (String) (serviceClient.invokeBlocking(opAddEntry,
 					parameterList, classes)[0]);
+
 			
-			if(returnName == "true"){
+			if(returnName.equals("true")){
 				System.out.println("_!_!_!");
 				System.out.println(parameterList2[0].toString());
 				Boolean returnBind = bind.binding(parameterList2[0].toString(), session);
@@ -231,6 +234,14 @@ case "base_loginName":
 			out.write(returnName);
 			
 			break;
+		case "base_register":
+			
+			Boolean returnRgister = register.registering(session);
+			System.out.println("boolean---------");
+		
+			out.write(returnRgister.toString());
+		
+		break;
 		default:out.write( "û���ҵ�returnType");
 		
 		}

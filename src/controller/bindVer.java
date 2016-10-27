@@ -3,55 +3,46 @@ package controller;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import DataBase.ConnectOracle;
 
-public class bind {
-	
-	/** 
-	 * 方法简述：绑定账户
-	 * @author 常景胜
-	 * @param args:openid
-	 * @param session
-	 * @return 
-	 * 
-	 */
-	public static boolean binding(String args,HttpSession session){
+public class bindVer {
+	public static Map<String, Object> getLoginNameing(HttpSession session){
 		
-		String openid = (String) session.getAttribute("openid");
+		String openid = (String) session.getAttribute("openID");
 		//连接数据库
 		ConnectOracle connectDataBase = new ConnectOracle();
 		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
 		if(connectDataBase.getData() != null){
-			if(openid == null){
-				return false;
-			}
 			try {
+				
 				Statement statement = connectDataBase.getData().createStatement();
-				String sql = "update t_nv_user set open_id = '"+openid+"', source_link = 'weixin', open_check = 1 where login_name = '"+args+"'";
+				String sql = "select login_name from t_nv_user where open_id = '"+openid+"' and source_link = 'weixin' ";
 				System.out.println(sql);
 		        ResultSet rs = statement.executeQuery(sql);
+		        
+		        while(rs.next() && rs != null){                  
+					map.put("login_name", rs.getString("login_name"));
+					System.out.println(rs.getString("login_name"));
+					map.put("OK", "true");
+					}
 		 		rs.close();
 		 		connectDataBase.getData().close();
-		 		return true;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("出现异常");
-				return false;
 			}
 		}else{
 			System.out.println("数据链连接失败=====bind=====");	
 		}
-
-
-
-
-		return false;
-		
-		
+		return map;
 	}
 }

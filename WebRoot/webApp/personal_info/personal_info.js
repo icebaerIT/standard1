@@ -27,13 +27,21 @@ function userInfo1() {
 				if(list[0].url != null){
 					url = list[0].url;
 				};
+				var Blance = list[0].accountBlance;
+				var Role = list[0].accountRole;
+				if(Blance == "" || Blance == undefined || Blance == null){
+					Blance = 0;
+				}
+				if(Role == "" || Role == undefined || Role == null){
+					Role = 0;
+				}
 				//var url = "http:\/\/wx.qlogo.cn\/mmopen\/cPCNP1v1wjt2eic09JIvHKtME1exh1w1Ekwa3YxEJKovXYXB4ZTUbjXWgPzz07tQVkibgnnyl93evhf20gDgW9hbeUcnficUficl\/0";
 				var newurl = url.substring(0, url.length - 2) + "/46";
 				newurl = url.replace(/\\/g, "");
 				$("#pic").attr("src", newurl);
-				$("#userName").html(list[0].userLoginName);
-				$("#userBlance").html("￥" + list[0].accountBlance);
-				$("#userGrade").html(list[0].accountRole + "&nbsp&nbsp");
+				$("#userName").html(list[0].nickname);
+				$("#userBlance").html("￥" + Blance);
+				$("#userGrade").html(tRole + "&nbsp&nbsp");
 			}else{
 				alert("用户失效,从新进入");
 			}
