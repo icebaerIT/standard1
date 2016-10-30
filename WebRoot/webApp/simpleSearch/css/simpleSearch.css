@@ -152,13 +152,13 @@ header strong {
 #serachkeyword
 {
 	float:left;
+	font-size: 30px;
+	margin-left:25px;
+	margin-top: 0px;
 	outline:none;/*被选择框的颜色*/
 	background-color:#fbf9fe;
 	border:0px;
-    font-size: 17px;
     width: 50%;
-    margin-top: 10px;
-    margin-left: 5px;
 }
 
 #searchtext{

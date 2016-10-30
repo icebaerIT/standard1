@@ -82,9 +82,9 @@ public class GetPortServlet extends HttpServlet {
 		Object[] parameterList = (Object[]) ArrayUtils.addAll(parameterList1, parameterList2);	
 		
 		
-		String portName = request.getParameter("portName");//��ȡ���õĽӿ���	
+		String portName = request.getParameter("portName");
 		RPCServiceClient serviceClient = new RPCServiceClient();
-		Options options = serviceClient.getOptions();// ָ������webservice��URL
+		Options options = serviceClient.getOptions();
 		
 		EndpointReference targetEPR = new EndpointReference(Bundle.getString("ENDPOINTREFERENCE_CSSN"));
 		options.setTo(targetEPR);
@@ -97,7 +97,7 @@ public class GetPortServlet extends HttpServlet {
 		switch(returnType){
 		case "base" : 
 			classes = new Class[] { String.class };
-			String returnValue ;//����ֵ����ݷ�����ͬ�������ķ���ֵ����
+			String returnValue ;
 			returnValue = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);//���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry, args, classes)[0]);				
 			out.write(returnValue);
 			break;
@@ -108,8 +108,8 @@ public class GetPortServlet extends HttpServlet {
 				regetStandardDetail.put("star", "light");
 			}
 			classes = new Class[] { String.class };
-			String returngetStandardDetail ;//����ֵ����ݷ�����ͬ�������ķ���ֵ����
-			returngetStandardDetail = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);//���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry, args, classes)[0]);
+			String returngetStandardDetail ;
+			returngetStandardDetail = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);
 			regetStandardDetail.put("data", returngetStandardDetail);
 			out.write(JSONObject.fromObject(regetStandardDetail).toString());
 			break;
@@ -122,30 +122,18 @@ public class GetPortServlet extends HttpServlet {
 				Object[] setUserTrackingList = (Object[]) ArrayUtils.addAll(setUserTrackinglist1, setUserTrackinglist2);
 				classes = new Class[] { String.class };
 				String returnSetUserTrackingValue ;
-				returnSetUserTrackingValue = (String)(serviceClient.invokeBlocking(opAddEntry, setUserTrackingList, classes)[0]);//���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry, args, classes)[0]);				
+				returnSetUserTrackingValue = (String)(serviceClient.invokeBlocking(opAddEntry, setUserTrackingList, classes)[0]);
 				out.write(returnSetUserTrackingValue);
 			}else{
 				out.write("bind");
 			}
 			break;
-		case "Ccs": break;
-		case "DownInfo": break;
-		case "ElecInfo": break;
-		case "ExtensionMapper": break;
-		case "Ics": break;
-		case "OrderInfo": break;
-		case "OrderItem": break;
-		case "OrderServFee": break;
-		case "Pagination": break;
-		case "QueryResult": //�߼���ѯ	
+		case "QueryResult":
 			classes = new Class[] { QueryResult.class };
-			QueryResult returnValue1 ;//����ֵ����ݷ�����ͬ�������ķ���ֵ����
-			returnValue1 = (QueryResult)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);//���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry, args, classes)[0]);				
+			QueryResult returnValue1 ;
+			returnValue1 = (QueryResult)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);
 			out.write(JSONArray.fromObject(returnValue1).toString());
 			break;
-		case "StanardSort": break;
-		case "StandardElecInfo": break;
-		case "StandardList": break;
 		case "StandardPush": 
 			if(session.getAttribute("ID") == null){
 			out.write("false");
@@ -158,7 +146,6 @@ public class GetPortServlet extends HttpServlet {
 			out.write(JSONArray.fromObject(standardPush).toString());
 		}
 		break;
-		case "StandardSort": break;
 		case "StandardTracking": 
 			if(session.getAttribute("ID") == null){
 				out.write("false");
@@ -173,21 +160,13 @@ public class GetPortServlet extends HttpServlet {
 					System.out.println(JSONArray.fromObject(parameterList));
 			}
 			break;
-		case "StandardWrap": break;
-		case "TDStockAvisoItem": break;
-		case "ThiOrderItemData": break;
-		case "ThiOrderWrap": break;
-		case "TNvOrderValidationItem": break;
-		case "TopicCategory": // ����ר��
+		case "TopicCategory":
 			classes = new Class[] { TopicCategory[].class };
-			TopicCategory[] TopicCate;// ����ֵ����ݷ�����ͬ�������ķ���ֵ����
+			TopicCategory[] TopicCate;
 			TopicCate = (TopicCategory[]) (serviceClient.invokeBlocking(
-					opAddEntry, parameterList, classes)[0]);// ���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry,
-															// args,
-															// classes)[0]);
+					opAddEntry, parameterList, classes)[0]);
 			out.write(JSONArray.fromObject(TopicCate).toString());
 			break;
-		case "TrsStandard": break;
 		case "UserAccountInfo": //个人中心获取基本信息	
 		if(session.getAttribute("ID") == null){
 				out.write("false");
@@ -197,12 +176,9 @@ public class GetPortServlet extends HttpServlet {
 				JSONObject userInfoJO = JSONObject.fromObject(userInfoStr);
 				String url = userInfoJO.getString("headimgurl");
 				String nickname = userInfoJO.getString("nickname");
-				//String url = "http:\\/\\/wx.qlogo.cn\\/mmopen\\/cPCNP1v1wjt2eic09JIvHKtME1exh1w1Ekwa3YxEJKovXYXB4ZTUbjXWgPzz07tQVkibgnnyl93evhf20gDgW9hbeUcnficUficl\\/0";
-
-				Map<String, Object> userInfomation = new HashMap<String, Object>();
+								Map<String, Object> userInfomation = new HashMap<String, Object>();
 				userInfomation.put("url", url);
 				userInfomation.put("nickname", nickname);
-				//Object[] UserID = {"xiaoya_0822"};
 				Object[] UserAccountInfoList = (Object[]) ArrayUtils.addAll(
 						parameterList1, UserID);
 				classes = new Class[] { UserAccountInfo[].class };
@@ -213,8 +189,6 @@ public class GetPortServlet extends HttpServlet {
 				out.write(JSONArray.fromObject(userInfomation).toString());
 			}
 			break;
-		case "UserAudit": break;
-		case "UserAuditItem": break;
 		case "base_loginName":
 			
 			classes = new Class[] { String.class };
@@ -242,7 +216,20 @@ public class GetPortServlet extends HttpServlet {
 			out.write(returnRgister.toString());
 		
 		break;
-		default:out.write( "û���ҵ�returnType");
+		case "flag": // 跟踪标志改变
+			if(portName == "setUserStandardPushFlag"){
+				if(session.getAttribute("ID") == null){
+					out.write("false");
+				} else {
+					parameterList[0]  = session.getAttribute("ID");
+				}
+			}
+			classes = new Class[] { String.class };
+			String flagType ;
+			flagType = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);			
+			out.write(flagType);
+			break;
+		default:out.write( "noReturnType");
 		
 		}
 
@@ -251,11 +238,6 @@ public class GetPortServlet extends HttpServlet {
 	}
 		
 
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
 	public void init() throws ServletException {
 		// Put your code here
 	}

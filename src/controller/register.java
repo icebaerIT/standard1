@@ -29,7 +29,14 @@ public class register {
 	public static Boolean registering(HttpSession session){
 		// TODO Auto-generated method stub 
 					String[] a = new String[50];
-					String openID = (String) session.getAttribute("openid");
+					//String openID = (String) session.getAttribute("openID");
+
+					
+					String openID = "obFKEt4rdWQB0z5BAeer5EGaG3b4"+createRandom.createRandomCharData(2);
+					//openID = openID.substring(0,openID.length()-1);
+					System.out.println("创建临时账户");
+					System.out.println(openID);
+
 					a[0] = openID; 
 					a[1] = openID;
 					
@@ -62,7 +69,7 @@ public class register {
 						
 						
 						if(str.equals("1")){
-							TemBind.temBinding(session);
+							TemBind.temBinding(session,openID);
 							System.out.println("注册成功");
 							return true;
 						}else{

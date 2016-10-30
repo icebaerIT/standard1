@@ -163,11 +163,11 @@ function serach(type){
 		console.log("隐藏历史");
 		$("#history").hide();
 		//字体放大
-		$("#serachkeyword").css({
+/*		$("#serachkeyword").css({
 			"font-size": "30px",
 			"margin-left":"25px",
 			"margin-top": "0px",
-		});
+		});*/
 		//展示读取画面
 		if(type == 0){
 			$("#loading").show();
@@ -222,11 +222,11 @@ $(document).ready(function(){
 	var keyword = sessionStorage.getItem("simpleSearch_keyword");
 	if(keyword != null){
 		$("#serachkeyword").val(keyword);
-		$("#serachkeyword").css({
+/*		$("#serachkeyword").css({
 			"font-size": "30px",
 			"margin-left":"25px",
 			"margin-top": "0px",
-		});
+		});*/
 		console.log("有关键词"+ $("#serachkeyword").val(keyword));
 		//获取整个页面
 		var object = sessionStorage.getItem("simpleSearch_object");
@@ -253,11 +253,11 @@ $(document).on("touchend","#serachkeyword",function(){
 	console.log("点击了input");
 	$("#Dsearch").hide();
 	$("#search").html("查询");
-	$("#serachkeyword").css({
+/*	$("#serachkeyword").css({
 		"font-size": "17px",
 	    "margin-left": "5px",
 	    "margin-top": "10px",
-	});
+	});*/
 });
 
 //对历史记录进行读取比较

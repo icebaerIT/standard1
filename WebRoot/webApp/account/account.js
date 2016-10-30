@@ -63,6 +63,8 @@ function acc_creat(){
 			} else if (data == "true") {
 				alert("创建成功");
 				window.location.href = "/standard/webApp/personal_Center/personal_Center.html";
+			}else{
+				alert("未识别指令");
 			}
 		}
 	});
