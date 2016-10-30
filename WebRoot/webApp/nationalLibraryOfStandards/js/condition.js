@@ -412,5 +412,6 @@ function sure(){
 	}else if($(".nat").length >= 1){
 		window.sessionStorage.nat = allID;
 	}
-	window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html";
+	window.history.go(-1);
+//	window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html";
 }

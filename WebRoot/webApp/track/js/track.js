@@ -90,12 +90,18 @@ function judgeUserID(){
 				}
 				var list = "";
 				for(var i = 0; i < allData.length; i++){
-					var chinese = allData[i].a298A302.split("<br>");
+					var chinese = [];
+					if(allData[i].a298A302.indexOf("<br>") > -1){
+						chinese = allData[i].a298A302.split("<br>");
+					}else{
+						chinese[0] = "无";
+						chinese[1] = allData[i].a298A302; 
+					}
 					list += "<div class='detail'id="+allData[i].a001+" onclick='getDetails(this)'>"
 								+"<div class='number'><span>"+allData[i].a100+"</span><span class='new'></span></div>";
 							if(chinese != ""){
 								list += "<div class='chineseName'>中文题名：<span>"+chinese[0]+"</span></div>";
-								if(chinese[1] != undefined){
+								if(chinese[1] != undefined && chinese[1] != ""){
 									list += "<div class='englishName'>英文题名：<span>"+chinese[1]+"</span></div>";
 								}else{
 									list += "<div class='englishName'>英文题名：<span>无</span></div>";

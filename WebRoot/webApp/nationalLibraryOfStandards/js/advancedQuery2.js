@@ -60,12 +60,8 @@ function initial(){
 
 //判断是否有上一页
 function judgeLastPage(){
-	if(document.referrer == ""){
-		$(".back2").hide();
-		$("header strong").css("margin-left","0");
-	}else{
-		$(".back2").show();
-		$("header strong").css("margin-left","-30px");
+	if(document.referrer != ""){
+		$(".back").show();
 	}
 }
 

@@ -151,7 +151,7 @@ header strong {
 }
 #serachkeyword
 {
-	float:left;
+	/* float:left; */
 	font-size: 30px;
 	margin-left:25px;
 	margin-top: 0px;

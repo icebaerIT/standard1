@@ -139,7 +139,8 @@ function back(){
 //	sessionStorage.removeItem("nat");
 //	sessionStorage.removeItem("inter");
 //	sessionStorage.removeItem("variety");
-	window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html";
+//	window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html";
+	window.history.go(-1);
 }
 
 

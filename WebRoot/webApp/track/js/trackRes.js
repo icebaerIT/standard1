@@ -85,13 +85,13 @@ function getData(id,totalID){
 		}
 	});
 	
-	pushFlag(totalID);
+//	pushFlag(totalID);
 }
 
 function pushFlag(totalID){
 	var parameterList = ["Hiliuyan",totalID];
 	var portName = "setUserStandardPushFlag";
-	var returnType = "base";
+	var returnType = "flag";
 	$.ajax({
 		type : "POST",
 		url : "../../servlet/GetPortServlet",

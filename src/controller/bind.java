@@ -21,7 +21,7 @@ public class bind {
 	 */
 	public static boolean binding(String args,HttpSession session){
 		
-		String openid = (String) session.getAttribute("openid");
+		String openid = (String) session.getAttribute("openID");
 		//连接数据库
 		ConnectOracle connectDataBase = new ConnectOracle();
 		

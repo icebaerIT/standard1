@@ -28,10 +28,12 @@ function acc_bind() {
 
 				if (data == "" || data == undefined || data == "false" || data == null ) {
 					alert("账号或密码错误!");
-					history.go(-1);
+					//history.go(-1);
 				} else if (data == "true") {
 					alert("绑定成功");
 					window.location.href = "/standard/webApp/personal_Center/personal_Center.html";
+				} else {
+					alert("位置结果" + data);
 				}
 			}
 		});
@@ -59,7 +61,7 @@ function acc_creat(){
 
 			if (data == "" || data == undefined || data == "false") {
 				alert("创建临时账号失败!");
-				history.go(-1);
+				//history.go(-1);
 			} else if (data == "true") {
 				alert("创建成功");
 				window.location.href = "/standard/webApp/personal_Center/personal_Center.html";

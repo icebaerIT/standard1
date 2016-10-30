@@ -162,12 +162,6 @@ function serach(type){
 	if(serach != null && serach != "" && !isNull(serach) ){
 		console.log("隐藏历史");
 		$("#history").hide();
-		//字体放大
-/*		$("#serachkeyword").css({
-			"font-size": "30px",
-			"margin-left":"25px",
-			"margin-top": "0px",
-		});*/
 		//展示读取画面
 		if(type == 0){
 			$("#loading").show();
@@ -186,12 +180,10 @@ function serach(type){
 			default:alert("不存在");
 			}
 		},300);
-	}/*else if(theserach != null && theserach != "" && !isNull(theserach) ){
-		console.log("之前有东西");
-	}*/else{
-/*		dropload_me.lock();*/
+	}else{
+
 		console.log("没东西");
-/*		dropload_me.noData();*/
+
 		console.log("锁定拉读取");
 		dropload_me.resetload();
 	}
@@ -204,19 +196,14 @@ function Dsearch(){
 	console.log("跳转" + escape($("#serachkeyword").val()));
 	setTimeout(10000,window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html?keyword=" + escape($("#serachkeyword").val()));
 }
+
 //只能输入数字的方法
 function onlyNum(){
 	console.log("修订");
 	document.getElementById('thePage').value = document.getElementById('thePage').value.replace(/[^0-9-]+/,'');
 	}
 
-/*$(document).ready(function(){
-	console.log("上一页长度:"+window.history.length);
-	if(window.history.length == 1){
-		$("body").css("padding-top","0px");
-		$("#top").hide();
-	}
-});*/
+
 
 $(document).ready(function(){
 	var keyword = sessionStorage.getItem("simpleSearch_keyword");
@@ -241,7 +228,6 @@ $(document).ready(function(){
 		$("#serachs").show();
 		$("#Dsearch").show();
 		console.log("已打印之前的数据");
-/*		setTimeout(function(){dropload_me.unlock();},1000);*/
 	}
 	if(document.referrer == ""){
 		$(".back").css("display","none");
@@ -260,12 +246,7 @@ $(document).on("touchend","#serachkeyword",function(){
 	});*/
 });
 
-//对历史记录进行读取比较
-function history(){
-	
-	
-	
-}
+
 
 //切换为替换
 $(document).on("touchend","#search",function(){
