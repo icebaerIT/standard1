@@ -107,18 +107,36 @@ public class GetPortServlet extends HttpServlet {
 			returngetStandardDetail = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);
 			regetStandardDetail.put("data", returngetStandardDetail);
 			
-			if(session.getAttribute("ID")!=null){//判断ＩＤ是否为空,如果不为空通过	
-				String[] getStandardDetail_ParameterList  = {"lkscn$200301","9ijnmko0","95c3f3e5cf03a6a8fb7161f72a8b1f2f","200301",null,"1","10"};
-				//getStandardDetail_ParameterList[4] = (String) session.getAttribute("ID");
+			if(session.getAttribute("ID")==null){//判断ＩＤ是否为空,如果不为空通过	
+				String[] getStandardDetail_ParameterList  = {"lkscn$200301","9ijnmko0","95c3f3e5cf03a6a8fb7161f72a8b1f2f","200301",null,"1","9999"};
+				getStandardDetail_ParameterList[4] = (String) session.getAttribute("ID");
 					classes = new Class[] { StandardTracking[].class };
 					QName opAddEntry1 = new 	QName(Bundle.getString("WS_QNAME"),"getUserStandardTracking");
 					StandardTracking[] standardTracking;
 					standardTracking = (StandardTracking[]) (serviceClient.invokeBlocking(
 							opAddEntry1, getStandardDetail_ParameterList, classes)[0]);
-					System.out.println(JSONArray.fromObject(standardTracking));
+					
+					
+					JSONArray JSON_standardTracking = JSONArray.fromObject(standardTracking);
+					Object[] JSONArray_standardTracking = JSON_standardTracking.toArray();
+					
+					System.out.println("开始遍历跟踪列表");
+					for(int i = 0; i < JSONArray_standardTracking.length; i++){
+						System.out.println(JSONArray_standardTracking[i]);
+						
+						if(((JSONObject) JSONArray_standardTracking[i]).getString("a001").equals(parameterList[4])){//如果跟踪列表中有数据则进入
+							System.out.println("收藏过的");
+							regetStandardDetail.put("star", "light");
+							break;
+						}
+						
+					}
+					
+					
+					//System.out.println(JSONArray.fromObject(standardTracking));
 					System.out.println("parameterList------");
 					System.out.println(JSONArray.fromObject(parameterList));
-				regetStandardDetail.put("star", "light");
+				
 				//["lkscn$200301","9ijnmko0","95c3f3e5cf03a6a8fb7161f72a8b1f2f","200301","obFKEt1U4KmC2E7Cht75WZJHJch8","1","10"]
 				
 			}
