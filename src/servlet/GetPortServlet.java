@@ -107,7 +107,7 @@ public class GetPortServlet extends HttpServlet {
 			returngetStandardDetail = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);
 			regetStandardDetail.put("data", returngetStandardDetail);
 			
-			if(session.getAttribute("ID")==null){//判断ＩＤ是否为空,如果不为空通过	
+			if(session.getAttribute("ID")!=null){//判断ＩＤ是否为空,如果不为空通过	
 				String[] getStandardDetail_ParameterList  = {"lkscn$200301","9ijnmko0","95c3f3e5cf03a6a8fb7161f72a8b1f2f","200301",null,"1","9999"};
 				getStandardDetail_ParameterList[4] = (String) session.getAttribute("ID");
 					classes = new Class[] { StandardTracking[].class };
@@ -149,6 +149,7 @@ public class GetPortServlet extends HttpServlet {
 				String[] setUserTrackinglist1={orgLoginName,password,ukeyId,orgCode};
 				Object[] setUserTrackinglist2 =request.getParameterValues("parameterList");
 				setUserTrackinglist2[0] = session.getAttribute("ID");
+				//setUserTrackinglist2[0] = "obFKEt1U4KmC2E7Cht75WZJHJch8";
 				Object[] setUserTrackingList = (Object[]) ArrayUtils.addAll(setUserTrackinglist1, setUserTrackinglist2);
 				classes = new Class[] { String.class };
 				String returnSetUserTrackingValue ;
