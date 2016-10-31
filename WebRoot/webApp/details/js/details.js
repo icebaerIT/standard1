@@ -128,8 +128,10 @@ function collect(){
 				   if(data != null && data != ""){
 					   	console.log(data);
 					   	switch(data){
-					   	case "1":alert("跟踪成功");break;
-					   	case "2":alert("已经跟踪");break;
+					   	case "1":alert("跟踪成功")
+					   	document.getElementById("star").src = "img/collect.png";
+					   	;break;
+					   	case "2":alert("已经跟踪过了");break;
 					   	case "0":alert("跟踪失败");break;
 					   	case "bind":
 					   		if(confirm("你的账户未绑定,需要绑定点确定")){
