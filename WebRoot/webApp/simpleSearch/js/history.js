@@ -57,10 +57,10 @@ function save_history(){
 	
 	if(repeat_history == 0){//如果没哟重复就把历史记录放上去
 		if(length < 7){
-			$("#history-element-list").prepend("<li class='history-element'>"+val_search+"</li>");
+			$("#history-element-list").prepend("<li class='history-element'>"+val_search+"<img class='next' src='img/next.png'></li>");
 		}else{
 			$("#history-element-list li:eq(6)").remove();
-			$("#history-element-list").prepend("<li class='history-element'>"+val_search+"</li>");
+			$("#history-element-list").prepend("<li class='history-element'>"+val_search+"<img class='next' src='img/next.png'></li>");
 			
 		}	
 	}
