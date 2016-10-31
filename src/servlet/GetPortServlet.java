@@ -26,7 +26,7 @@ import org.apache.commons.lang.ArrayUtils;
 
 import controller.bind;
 import controller.register;
-import DataBase.theMySQL;
+
 
 
 import cn.gov.cnis.cssn.wssort.xsd.QueryResult;
@@ -58,10 +58,7 @@ public class GetPortServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		
 		HttpSession session = request.getSession();
-		System.out.println("我是过去的GetPort:"+session.getAttribute("AAA"));
-		session.setAttribute("AAA", "hello yeah!!!");
-		System.out.println("我是之后的GetPort:"+session.getAttribute("AAA"));
-		System.out.println("======================");
+
 		
 		PrintWriter out = response.getWriter();
 		
@@ -101,7 +98,7 @@ public class GetPortServlet extends HttpServlet {
 			returnValue = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);//���ýӿڣ�����ֵ��object������Ҫ����ת��ʱ��ֱ������ǰ�������Ҫת�������ͣ���(String)(serviceClient.invokeBlocking(opAddEntry, args, classes)[0]);				
 			out.write(returnValue);
 			break;
-		case "getStandardDetail":
+		case "getStandardDetail"://获取详情页面
 			Map<String,Object> regetStandardDetail = new HashMap<String,Object>();
 			regetStandardDetail.put("star", "black");
 			
@@ -110,18 +107,7 @@ public class GetPortServlet extends HttpServlet {
 			returngetStandardDetail = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);
 			regetStandardDetail.put("data", returngetStandardDetail);
 			
-			if(session.getAttribute("ID")==null){//判断ＩＤ是否为空,如果不为空通过
-				
-				
-				//parameterList[4]  = session.getAttribute("ID");
-				parameterList[4]  = "obFKEt1U4KmC2E7Cht75WZJHJch8";
-				classes = new Class[] { StandardTracking[].class };
-					StandardTracking[] standardTracking;
-					standardTracking = (StandardTracking[]) (serviceClient.invokeBlocking(
-							opAddEntry, parameterList, classes)[0]);
-					System.out.println("parameterList------");
-					System.out.println(JSONArray.fromObject(standardTracking).toString());
-					System.out.println(JSONArray.fromObject(parameterList));
+			if(session.getAttribute("ID")!=null){//判断ＩＤ是否为空,如果不为空通过			
 				regetStandardDetail.put("star", "light");
 				
 			}
