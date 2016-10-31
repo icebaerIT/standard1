@@ -115,11 +115,7 @@ function RequestWebService(parameterList) {
 			
 		});
 }
-function saveHistory(serach){
-	for(var i = 0;i < 7;i++){
-		$.cookie(i,"1",{expires:7});
-	}
-}
+
 function isNull(str){
 	var regu = "^[ ]+$";
 	var re = new RegExp(regu);
@@ -153,7 +149,11 @@ function serach(type){
 	
 
 	console.log("查询开始");
+
 	var serach = $("#serachkeyword").val();
+	if(type == 3){
+		serach = serach_history;
+	}
 	var theserach  = sessionStorage.getItem("simpleSearch_keyword");
 //	存历史记录
 	console.log("关键字"+serach);
@@ -174,6 +174,10 @@ function serach(type){
 			case 1:parameterList[3]= parseInt(thePage)+1 ;
 					console.log("下一页是"+(thePage+1));
 			case 0:
+				parameterList[0]=serach;
+				RequestWebService(parameterList);
+				break;
+			case 3:				
 				parameterList[0]=serach;
 				RequestWebService(parameterList);
 				break;

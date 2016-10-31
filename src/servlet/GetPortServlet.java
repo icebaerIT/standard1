@@ -104,13 +104,28 @@ public class GetPortServlet extends HttpServlet {
 		case "getStandardDetail":
 			Map<String,Object> regetStandardDetail = new HashMap<String,Object>();
 			regetStandardDetail.put("star", "black");
-			if(session.getAttribute("ID")!=null){//判断ＩＤ是否为空,如果不为空通过
-				regetStandardDetail.put("star", "light");
-			}
+			
 			classes = new Class[] { String.class };
 			String returngetStandardDetail ;
 			returngetStandardDetail = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);
 			regetStandardDetail.put("data", returngetStandardDetail);
+			
+			if(session.getAttribute("ID")==null){//判断ＩＤ是否为空,如果不为空通过
+				
+				
+				//parameterList[4]  = session.getAttribute("ID");
+				parameterList[4]  = "obFKEt1U4KmC2E7Cht75WZJHJch8";
+				classes = new Class[] { StandardTracking[].class };
+					StandardTracking[] standardTracking;
+					standardTracking = (StandardTracking[]) (serviceClient.invokeBlocking(
+							opAddEntry, parameterList, classes)[0]);
+					System.out.println("parameterList------");
+					System.out.println(JSONArray.fromObject(standardTracking).toString());
+					System.out.println(JSONArray.fromObject(parameterList));
+				regetStandardDetail.put("star", "light");
+				
+			}
+			
 			out.write(JSONObject.fromObject(regetStandardDetail).toString());
 			break;
 		case "setUserTracking":	
