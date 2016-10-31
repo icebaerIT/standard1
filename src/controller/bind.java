@@ -12,7 +12,7 @@ import DataBase.ConnectOracle;
 public class bind {
 	
 	/** 
-	 * 方法简述：
+	 * 方法简述：绑定账户
 	 * @author 常景胜
 	 * @param args:openid
 	 * @param session
@@ -21,11 +21,14 @@ public class bind {
 	 */
 	public static boolean binding(String args,HttpSession session){
 		
-		String openid = (String) session.getAttribute("openid");
+		String openid = (String) session.getAttribute("openID");
 		//连接数据库
 		ConnectOracle connectDataBase = new ConnectOracle();
 		
 		if(connectDataBase.getData() != null){
+			if(openid == null){
+				return false;
+			}
 			try {
 				Statement statement = connectDataBase.getData().createStatement();
 				String sql = "update t_nv_user set open_id = '"+openid+"', source_link = 'weixin', open_check = 1 where login_name = '"+args+"'";

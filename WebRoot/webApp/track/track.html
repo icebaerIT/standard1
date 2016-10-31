@@ -9,19 +9,43 @@
 	<title>用户跟踪</title>
 
 	<link rel="stylesheet" href="css/track.css" type="text/css"></link>
+  	<link rel="stylesheet" href="../nationalLibraryOfStandards/css/loading.css" type="text/css"></link>
+  	<link rel="stylesheet" href="../nationalLibraryOfStandards/css/dropload.min.css" type="text/css"></link>
+  </head>
 <body>
 	<header>
-		<img class="back" src="img/back.png" onclick="javascript :history.back(-1);"></img>
+		<!-- <img class="back" src="img/back.png" onclick="javascript :history.back(-1);"></img> -->
 		<strong>我的跟踪列表</strong>
 	</header>
-	<div class="main">
-		<div class="detail">
-			<div class="number"><span>GB/T 10001.2-2006</span><span class="new">NEW</span><img class="collect" src="img/collect.png"></img></div>
-			<div class="chineseName">中文名称：<span>标志用公共信息图形符号  第2部分;旅游休闲符号</span></div>
-			<div class="englishName">英文名称：<span>Public information graphical symbols for use on sign.Part 2:Symbols for tourism and entertainment</span></div>
+	<div id="loading">
+  	   <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+  	</div>
+	<div id="empty" class="bg"><div>没有查到数据</div></div>
+	<div class="contents">
+		<div class="main">
+			<!-- <div class="detail">
+				<div class="number"><span>GB/T 10001.2-2006</span><span class="new">NEW</span><img class="collect" src="img/collect.png"></img></div>
+				<div class="chineseName">中文题名：<span>标志用公共信息图形符号  第2部分;旅游休闲符号</span></div>
+				<div class="englishName">英文题名：<span>Public information graphical symbols for use on sign.Part 2:Symbols for tourism and entertainment</span></div>
+			</div> -->
 		</div>
+		<div class="pull">没有更多数据了</div>
 	</div>
 	<script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
+	<script type="text/javascript" src="../nationalLibraryOfStandards/js/dropload.min.js"></script>
 	<script type="text/javascript" src="js/track.js"></script></head>
 </body>
 </html>

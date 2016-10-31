@@ -5,32 +5,20 @@ var parameterList = new Array();
 parameterList[4] = 10;
 dropload_me = $('#search-list').dropload.me;
 var input_keyword = null;
+
+
+function isNull( str ){
+    if ( str == "" ) return true;
+    var regu = "^[ ]+$";
+    var re = new RegExp(regu);
+    return re.test(str);
+}
+
 function back(){
 	history.back(-1);
 }
-/*function lose_blur(){
-		input_keyword = $("#serachkeyword").val();
-	setTimeout(function(){
-		var serach = sessionStorage.getItem("simpleSearch_keyword");
-		if(serach != null && serach != "" && !isNull(serach) ){
-			$("#serachkeyword").val(serach);
-			$("#serachkeyword").css({
-				"font-size": "30px",
-				"margin-left":"25px",
-				"margin-top": "0px",
-			});
-			$("#serachs").show();
-			$("#Dsearch").show();
-		}
-	},1000);
-	console.log("失去焦点");
 
-}*/
 function RequestWebService(parameterList) {
-		
-		
-	
-
 //		parameterList = ["","","","","Q","","","","","","","1","10"];
 //		var portName = "advencedSearch";
 //		returnType = "QueryResult";
@@ -53,7 +41,7 @@ function RequestWebService(parameterList) {
 				
 				var aa = $.parseJSON(data);
 				console.log(aa[0]);
-				totalPage = aa[0].totalPage
+				totalPage = aa[0].totalPage;
 				$("#totalPage").html(aa[0].totalPage);
 				console.log("总页数"+aa[0].totalPage);
 				$("#thePage").attr("value",aa[0].pageIndex);
@@ -61,12 +49,19 @@ function RequestWebService(parameterList) {
 
 				var data = $.parseJSON(aa[0].resultStr);
 				var thelist = "";
-				console.log(data);
+				console.log(data);	
 				for(var theData in data){
+					var now = "现行";
+					var now_Color = "state-green";
+					switch(data[theData]["记录状态"]){
+					case "N":;
+					case "A":now = "现行";break;
+					default:now = "废止",now_Color = "state-red";break;
+					}
 					thelist +="<li class='opacity'><a href='../details/details.html?id="+data[theData]["记录标识符"]+"'>"+
-		 			"<div><p>"+data[theData]["文献号"]+"<span class='state state-green'>现行</span></p></div>"+
-		 			"<div><p><span>中文名称:</span>"+data[theData]["中文题名"]+"</p></div>"+
-		 			"<div><p><span>英文名称:</span>"+data[theData]["英文题名"]+"</p></div>"+
+		 			"<div><p>"+data[theData]["文献号"]+"<span class='state "+now_Color+"'>"+now+"</span></p></div>"+
+		 			"<div><p><span>中文题名:</span>"+data[theData]["中文题名"]+"</p></div>"+
+		 			"<div><p><span>英文题名:</span>"+data[theData]["英文题名"]+"</p></div>"+
 		 			"</a></li>";
 					
 				}
@@ -98,8 +93,6 @@ function RequestWebService(parameterList) {
 					//保存总页面thePage
 					sessionStorage.setItem("simpleSearch_totalPage",totalPage);
 					console.log("已保存数据");
-/*					dropload_me.noData(false);*/
-	/*				setTimeout(function(){dropload_me.unlock();},3000);*/
 				}
 
 				console.log("展示");
@@ -122,11 +115,7 @@ function RequestWebService(parameterList) {
 			
 		});
 }
-function saveHistory(serach){
-	for(var i = 0;i < 7;i++){
-		$.cookie(i,"1",{expires:7});
-	}
-}
+
 function isNull(str){
 	var regu = "^[ ]+$";
 	var re = new RegExp(regu);
@@ -150,25 +139,22 @@ $('#search-list').dropload({
 			$(".pull").fadeIn(1000);
 			$(".pull").fadeOut(1000);
     		me.resetload();
-/*    		me.lock();*/
-/*    		console.log("锁定拉读取");*/
     		console.log("没有更多了");
     	}
     	
     },
-/*    error :function(){
-    	console.log("加载出错!!!");
-    	me.resetload();
-    }*/
 	});
 
 function serach(type){
 	
 
 	console.log("查询开始");
+
 	var serach = $("#serachkeyword").val();
+	if(type == 3){
+		serach = serach_history;
+	}
 	var theserach  = sessionStorage.getItem("simpleSearch_keyword");
-/*	$("#loading").show();*/
 //	存历史记录
 	console.log("关键字"+serach);
 	console.log("之前的关键字"+theserach);
@@ -176,12 +162,6 @@ function serach(type){
 	if(serach != null && serach != "" && !isNull(serach) ){
 		console.log("隐藏历史");
 		$("#history").hide();
-		//字体放大
-		$("#serachkeyword").css({
-			"font-size": "30px",
-			"margin-left":"25px",
-			"margin-top": "0px",
-		});
 		//展示读取画面
 		if(type == 0){
 			$("#loading").show();
@@ -197,15 +177,17 @@ function serach(type){
 				parameterList[0]=serach;
 				RequestWebService(parameterList);
 				break;
+			case 3:				
+				parameterList[0]=serach;
+				RequestWebService(parameterList);
+				break;
 			default:alert("不存在");
 			}
 		},300);
-	}/*else if(theserach != null && theserach != "" && !isNull(theserach) ){
-		console.log("之前有东西");
-	}*/else{
-/*		dropload_me.lock();*/
+	}else{
+
 		console.log("没东西");
-/*		dropload_me.noData();*/
+
 		console.log("锁定拉读取");
 		dropload_me.resetload();
 	}
@@ -218,29 +200,24 @@ function Dsearch(){
 	console.log("跳转" + escape($("#serachkeyword").val()));
 	setTimeout(10000,window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html?keyword=" + escape($("#serachkeyword").val()));
 }
+
 //只能输入数字的方法
 function onlyNum(){
 	console.log("修订");
 	document.getElementById('thePage').value = document.getElementById('thePage').value.replace(/[^0-9-]+/,'');
 	}
 
-/*$(document).ready(function(){
-	console.log("上一页长度:"+window.history.length);
-	if(window.history.length == 1){
-		$("body").css("padding-top","0px");
-		$("#top").hide();
-	}
-});*/
+
 
 $(document).ready(function(){
 	var keyword = sessionStorage.getItem("simpleSearch_keyword");
 	if(keyword != null){
 		$("#serachkeyword").val(keyword);
-		$("#serachkeyword").css({
+/*		$("#serachkeyword").css({
 			"font-size": "30px",
 			"margin-left":"25px",
 			"margin-top": "0px",
-		});
+		});*/
 		console.log("有关键词"+ $("#serachkeyword").val(keyword));
 		//获取整个页面
 		var object = sessionStorage.getItem("simpleSearch_object");
@@ -255,7 +232,6 @@ $(document).ready(function(){
 		$("#serachs").show();
 		$("#Dsearch").show();
 		console.log("已打印之前的数据");
-/*		setTimeout(function(){dropload_me.unlock();},1000);*/
 	}
 	if(document.referrer == ""){
 		$(".back").css("display","none");
@@ -267,11 +243,11 @@ $(document).on("touchend","#serachkeyword",function(){
 	console.log("点击了input");
 	$("#Dsearch").hide();
 	$("#search").html("查询");
-	$("#serachkeyword").css({
+/*	$("#serachkeyword").css({
 		"font-size": "17px",
 	    "margin-left": "5px",
 	    "margin-top": "10px",
-	});
+	});*/
 });
 
 

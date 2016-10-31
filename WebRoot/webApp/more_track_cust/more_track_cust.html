@@ -56,5 +56,17 @@
     </div>
     <script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="js/more_track_cust.js"></script>
+    <script>
+	$(function() {
+
+		var height = $(window).height(), width = $(window).width();
+		console.log(height);
+		if(width > 400){
+			console.log(width);
+			$("body").css("font-size","18px");
+			
+			}
+	});
+	</script>
   </body>
 </html>

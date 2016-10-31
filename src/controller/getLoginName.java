@@ -11,8 +11,13 @@ import javax.servlet.http.HttpSession;
 import DataBase.ConnectOracle;
 
 
+/**
+ * @author joseber
+ * 通过用户的openID获取到用户的真实ID
+ *
+ */
 public class getLoginName {
-public static Map<String, Object> getLoginNameing(HttpSession session){
+	public static Map<String, Object> getLoginNameing(HttpSession session){
 		
 		String openid = (String) session.getAttribute("openID");
 /*		String openid = "obFKEt1U4KmC2E7Cht75WZJHJch8";*/

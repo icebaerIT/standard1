@@ -17,12 +17,18 @@ import com.javen.course.util.HttpUtil;
 
 import controller.getLoginName;
 
-public class IntoAdvencedSearch extends HttpServlet {
+public class IntoTrackSearch extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * Constructor of the object.
 	 */
-	public IntoAdvencedSearch() {
+	public IntoTrackSearch() {
 		super();
 	}
 
@@ -93,22 +99,26 @@ public class IntoAdvencedSearch extends HttpServlet {
 					
 					Map<String, Object> map = getLoginName.getLoginNameing(session);
 					
-					if(map.get("login_name") == null){
+					if(map.get("login_name") == null){//通过openid获取用户,如果用户未绑定跳转到丙丁页面
 	/*					response.sendRedirect(Bundle.getString("account"));*/
 	/*					response.sendRedirect(Bundle.getString("weixinOpenID"));*/
 						System.out.println("用户未绑定=========");
-					}else{
+						response.sendRedirect(Bundle.getString("account"));
+					}else{//如果用用户已经绑定那就跳转的个人中兴
 						System.out.println("用户已经绑定");
 	/*					session.setAttribute("ID",map.get("login_name"));*/
 	/*					response.sendRedirect(Bundle.getString("personCenter"));*/
+						System.out.println("进入跟踪");
+						session.setAttribute("ID",map.get("login_name"));
+						response.sendRedirect(Bundle.getString("track"));
 					}
-					session.setAttribute("ID",map.get("login_name"));
-					response.sendRedirect(Bundle.getString("advencedSearch"));
+					
+
 			}else{
 				System.out.println("取openid时出错了");
 			}
 		}else{
-			response.sendRedirect(Bundle.getString("advencedSearch"));
+			response.sendRedirect(Bundle.getString("track"));
 		}
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();

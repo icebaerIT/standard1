@@ -151,14 +151,14 @@ header strong {
 }
 #serachkeyword
 {
-	float:left;
+	/* float:left; */
+	font-size: 30px;
+	margin-left:25px;
+	margin-top: 0px;
 	outline:none;/*被选择框的颜色*/
 	background-color:#fbf9fe;
 	border:0px;
-    font-size: 17px;
     width: 50%;
-    margin-top: 10px;
-    margin-left: 5px;
 }
 
 #searchtext{
@@ -303,7 +303,6 @@ header strong {
 .state{
     display: inline-block;
     margin-left: 10px;
-    background-color: rgb(1, 192, 1);
     text-align: center;
     color: white;
     border-radius: 5px;

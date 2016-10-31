@@ -11,11 +11,15 @@ body{
 input[type="button"], input[type="submit"], input[type="reset"] {
 	-webkit-appearance: none;
 }
+input{
+	outline: none;
+}
 textarea { 
 	-webkit-appearance: none;
 }
 button{ 
 	border-radius: 0; 
+	outline:none;
 }
 #loading{
 	background-color: #efefef;
@@ -60,10 +64,14 @@ header:after{
 	margin-top: 15px;
 	margin-left: 30px;
 }
-.keyword span{
+.keyword input{
 	display: inline-block;
 	overflow: hidden;
-    height: 40px;
+	height: 40px;
+	border: none;
+	font-size: 30px;
+	background-color: transparent;
+	width: 100%;
 }
 .search,.filtrate{
 	float: right;

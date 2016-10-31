@@ -7,13 +7,13 @@ var national = sessionStorage.getItem("national");
 var standardSort = sessionStorage.getItem("standardSort");
 var standardStatus = sessionStorage.getItem("standardStatus");
 var totalPage = sessionStorage.getItem("totalPage");
-var page = sessionStorage.getItem("page");;
+var page = sessionStorage.getItem("page");
 var totalRes = resultDetail;
 
 window.onload = function(){
 	console.log(resultDetail);
 	if(keyWord != "" && keyWord != "undefined" && keyWord != "null"){
-		$(".keyword span").text(keyWord);
+		$(".keyword input").val(keyWord);
 	}
 	if(resultDetail == ""){
 		$("#empty").show();
@@ -54,18 +54,18 @@ function update(data){
 	for(var i = 0;i<data.length;i++){
 		result += "	<div class='detail' id='"+data[i]["记录标识符"]+"'>"
 					+"<div class='docNum'><span>"+data[i]["文献号"]+"</span><span class='type'>现行</span></div>"
-					+"<div class='chineseName'>中文名称：<span>"+data[i]["中文题名"]+"</span></div>" ;
+					+"<div class='chineseName'>中文题名：<span>"+data[i]["中文题名"]+"</span></div>" ;
 					if(data[i]["英文题名"] == ""){
-						result += "<div class='englishName'>英文名称：<span>无</span></div>";
+						result += "<div class='englishName'>英文题名：<span>无</span></div>";
 					}else{
-						result += "<div class='englishName'>英文名称：<span>"+data[i]["英文题名"]+"</span></div>";
+						result += "<div class='englishName'>英文题名：<span>"+data[i]["英文题名"]+"</span></div>";
 					}
 						result += "</div>";
 	}
 	$(".main").append(result);
 }
 
-function upload(){
+function upload(this_keyword){
 	$("#empty").hide();
 	if (standardSort == "undefined"){
 		standardSort = "";
@@ -79,7 +79,12 @@ function upload(){
 	if(standardStatus == "undefined"){
 		standardStatus = "";
 	}
+	if(this_keyword != undefined){
+		keyWord = this_keyword;
+	}
 	var parameterList = [keyWord,"",standardSort,international,national,"","","",standardStatus,"","",page,"10"];
+	console.log(parameterList);
+	console.log("para");
 	$.ajax({
 		type : "POST",
 		url : "../../servlet/advancedSearch",
@@ -92,18 +97,21 @@ function upload(){
 		async : false,
 		success : function(data) {
 			var this_data = $.parseJSON(data);
+			console.log(this_data);
+			console.log("-----");
 			var detail = $.parseJSON(this_data[0].resultStr);
 			for(var i = 0;i < detail.length;i++){
 				totalRes.push(detail[i]);
 			}
 			sessionStorage.datas =  JSON.stringify(totalRes);
 			sessionStorage.page = page;
-			console.log(detail);
-			console.log("totalRes");
-			console.log(totalRes);
-			if(page > this_data[0].totalPage){
+			console.log("totalpage");
+			console.log(this_data[0].totalPage);
+			if(page > this_data[0].totalPage && this_data[0].totalPage != 0){
+				$(".pull").fadeIn(1000);
+				$(".pull").fadeOut(1000);
 				return;
-			}else if(page == 1 && detail.length == 0){
+			}else if(page == 1 && detail.length == 0 || this_data[0].totalPage == 0){
 				$("#empty").show();
 			}
 			update(detail);
@@ -115,7 +123,9 @@ function search(){
 	$(".main").empty();
 	page = 1;
 	totalRes = [];
-	upload();
+	var this_keyword = $(".keyword").children("input").val();
+	sessionStorage.keyWord = this_keyword;
+	upload(this_keyword);
 	$("body").scrollTop("120px");
 }
 //筛选
@@ -124,7 +134,14 @@ function filtrate(){
 	keyWord = escape(keyWord);
 	window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html?keyword="+keyWord;
 }
-
+// 返回
+function back(){
+//	sessionStorage.removeItem("nat");
+//	sessionStorage.removeItem("inter");
+//	sessionStorage.removeItem("variety");
+//	window.location.href = "/standard/webApp/nationalLibraryOfStandards/advancedQuery.html";
+	window.history.go(-1);
+}
 
 
 	

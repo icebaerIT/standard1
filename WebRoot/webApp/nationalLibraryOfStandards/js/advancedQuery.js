@@ -50,14 +50,14 @@ window.onload = function(){
 	}
 	//选择标准状态
 	function choseState(_this){
-		if($(_this).attr("value") == "0"){
+		if($(_this).find("#stateImg").attr("value") == "0"){
 			$("#stateImg").attr("class","stateImg1");
 			$(".states").show(500);
-			$(_this).attr("value","1");
+			$(_this).find("#stateImg").attr("value","1");
 		}else{
 			$(".states").hide(500);
 			$("#stateImg").attr("class","stateImg2");
-			$(_this).attr("value","0");
+			$(_this).find("#stateImg").attr("value","0");
 		}
     }
 
@@ -126,7 +126,7 @@ window.onload = function(){
 			varieties += "	<li id='"+domain[i].id+"'><div>"
 					+"<img src='img/right.png' onclick='choseVar(this)' state='0'>"
 					+"<input class='firstCheck'type='checkbox' onclick='firstCheck(this)' value='0'>"
-					+"</div><input disabled='' class='firstVarieties'value='"+domain[i].id+'&nbsp;&nbsp;'+domain[i].description +"'>"
+					+"</div><input disabled='' class='firstVarieties'value='"+domain[i].description +"'>"
 			+"<ul class='"+domain[i].id+"'></ul></li>";
 		}
 		$("#variety").html(varieties);
@@ -136,7 +136,7 @@ window.onload = function(){
 		for(var i = 0; i < list.length; i++){
 			tree += "<li id='"+list[i].id+"'><div>" 
 			+"<input class='secondCheck' type='checkbox'sort='3' name='"+ulName+"'onclick='secondChose(this)' value='0'/></div>" 
-			+"<input disabled class='firstVariety' value='"+list[i].id+"&nbsp;&nbsp;"+list[i].description+"'>" 
+			+"<input disabled class='firstVariety' value='"/*+list[i].id+"&nbsp;&nbsp;"*/+list[i].description+"'>" 
 			+"</li>";
 		}
 		
@@ -239,6 +239,7 @@ window.onload = function(){
 		for(var i = 0,j=0; i<list.length;i++){
 			if($(list[i]).is(':checked')){
 				choosenList[j] = $(list[i]).parent().parent().attr("id");
+//				choosenList[j] = $(list[i]).parent().parent().children("input").val();
 				j++;
 			}
 		}
@@ -246,8 +247,9 @@ window.onload = function(){
 	}
 	function judgeRes(className,result){
 		$("#"+className).attr("result",result);
-		if(result.length > 2){
-			$("#"+className).val(result[0]+","+result[1]+"等"+result.length+"项");
+		console.log(result);
+		if(result.length > 1){
+			$("#"+className).val(result[0]+"等"+result.length+"项");
 		}else{
 			$("#"+className).val(result);
 		}
@@ -423,7 +425,8 @@ window.onload = function(){
 				m++;
 			}
 		}
-		
+		console.log(interAll);
+		console.log("国际标准");
 		for(var i = 0;i<interAll.length;i++){
 			var now_name = interAll[i].name.substr(0,6);
 			international += "	<li id='"+now_name+"'><div>"
@@ -486,6 +489,8 @@ window.onload = function(){
 			success : function(data) {
 				
 				var aa = $.parseJSON(data);
+				console.log(aa);
+				console.log("++++++");
 				var detail = $.parseJSON(aa[0].resultStr);
 				var details = aa[0].resultStr;
 				console.log(aa);

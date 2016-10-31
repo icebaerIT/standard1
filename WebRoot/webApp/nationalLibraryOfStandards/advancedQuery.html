@@ -29,8 +29,7 @@
 	<!-- <div class="bg"><div>正在处理，请稍后...</div></div> -->
 
 	<header>
-			<img class="back" src="img/back2.png" onclick="back()"></img>
-			<img class="back2" src="img/back2.png" onclick="javascript :history.back(-1);"></img>
+			<img class="back" src="img/back2.png" onclick="javascript :history.back(-1);"></img>
 			<strong>高级查询</strong>
 			<button class="sure" onclick="sure(this)">确定</button>
 	</header>
@@ -42,13 +41,13 @@
 				type="text"></li>
 			<li>
 				<p>标准状态</p>
-				<div class="part1" id="state">
+				<div class="part1" id="state" onclick="choseState(this)">
 					<span class="content"></span>
-					<img src="img/right.png" onclick="choseState(this)"id="stateImg" value="0">
+					<img src="img/right.png" id="stateImg" value="0">
 				</div>
 				<ul class="states">
-					<li class="xxk">现行标准</li>
-					<li class="zfk">作废标准</li>
+					<li class="">现行标准</li>
+					<li class="D">作废标准</li>
 					<li>所有标准</li>
 				</ul></li>
 			<li>
@@ -77,6 +76,6 @@
 	</div>
 	<script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
 	<script type="text/javascript" src="js/datas.js"></script>
-	<script type="text/javascript" src="js/advancedQuery.js"></script>
+	<script type="text/javascript" src="js/advancedQuery2.js"></script>
 </body>
 </html>

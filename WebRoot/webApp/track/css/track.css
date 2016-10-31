@@ -24,10 +24,18 @@ header{
 	height: 50px;
 	line-height:50px;
 	text-align: center;
-	background-color: white;
 	font-size: 25px;
+	background-color: inherit;
 	color:#1657b7;
 	z-index:9;
+}
+#loading{
+	background-color: #efefef;
+	position: fixed;
+	z-index: 999;
+/* 	display: none; */
+	width: 100%;
+	height: 100%;
 }
 .back {
     position: absolute;
@@ -36,7 +44,6 @@ header{
     width: 30px;
 }
 .main {
-	margin-top: 60px;
 	width: 100%;
 }
 .detail {
@@ -60,8 +67,29 @@ header{
     border-radius: 5px;
     font-size: 15px;
 }
-.collect {
-    float: right;
-    margin-right: 5px;
-   	width: 25px;
+.bg{
+	display: none;
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left : 0;
+}
+.bg div{
+	margin-top: 70%;
+	text-align:center;
+	color:gray;
+	font-size:25px;
+}
+.contents{
+  	margin-top: 60px;
+    width: 100%;
+}
+.pull{
+	display:none;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
 }

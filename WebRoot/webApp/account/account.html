@@ -22,10 +22,23 @@
 		<input type="text" class="msg" id="name" placeholder="标准馆账号">
 		<input type="password" class="msg" id="password" placeholder="密码">
 	</div>
+	<!-- <div class="creat_confirm">
 	<div class="confirm" onclick="acc_bind()">
 		<button>绑定</button>
 	</div>
+	<div class="confirm" onclick="acc_bind()">
+		<button>临时账号</button>
+	</div>
+	</div> -->
+	<div class="creat_confirm">
+		<button id="confirm" onclick="acc_bind()">绑定</button>
+		<button id="creat" onclick="acc_creat()">临时账号</button>
+	</div> 
 	<div class="tips">
+		<!-- <img class="pic" src="img/exclamation-red.png" alt="" id="exclamation">
+		<div id="tips_text">
+			<p id="text">如果您还没有账号，请点击此处获得临时账号</p>
+		</div> -->
 		<img class="pic" src="img/exclamation-red.png" alt="" id="exclamation">
 		<div id="tips_text">
 			<p id="text">此功能是将微信账号与中国标准化研究院国家标准馆账号进行逆行绑定，以便通过微信使用标准跟踪定制、信息集成、网络服务等部分功能。</p>
