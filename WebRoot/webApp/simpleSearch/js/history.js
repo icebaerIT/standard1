@@ -21,7 +21,7 @@ document.getElementById("search").onclick =
 
 function load_history(){//读取历史记录并且打印
 	document.getElementById("history-element-list").innerHTML = h_history; 
-	var element_history = document.getElementsByClassName("history-element");
+	var element_history = $(".history-element>span");
 	for(var i = 0; i < element_history.length; i++){
 		element_history[i].onclick = function(){
 			//还是历史搜索
@@ -40,9 +40,9 @@ function load_history(){//读取历史记录并且打印
 
 function save_history(){
 	console.log("开始保存历史记录");
-	var element_history = document.getElementsByClassName("history-element");
-	var aaa = $(".history-element>span");
-	console.log(aaa);
+	//var element_history = document.getElementsByClassName("history-element");
+	var element_history = $(".history-element>span");
+	//console.log(aaa);
 	var length = element_history.length;
 	console.log(length);
 	var val_search= $("#serachkeyword").val();
@@ -59,10 +59,10 @@ function save_history(){
 	
 	if(repeat_history == 0){//如果没哟重复就把历史记录放上去
 		if(length < 7){
-			$("#history-element-list").prepend("<li class='history-element'><span>"+val_search+"<span><img class='next' src='img/next.png'></li>");
+			$("#history-element-list").prepend("<li class='history-element'><span>"+val_search+"</span><img class='next' src='img/next.png'></li>");
 		}else{
 			$("#history-element-list li:eq(6)").remove();
-			$("#history-element-list").prepend("<li class='history-element'><span>"+val_search+"<span><img class='next' src='img/next.png'></li>");
+			$("#history-element-list").prepend("<li class='history-element'><span>"+val_search+"</span><img class='next' src='img/next.png'></li>");
 			
 		}	
 	}

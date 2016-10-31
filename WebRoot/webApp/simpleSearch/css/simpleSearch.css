@@ -6,16 +6,22 @@
 }
 
 .next{
-	float: right;
+    /* float: right; */
     padding: 1px;
     height: 30px;
     width: 30px;
+    position: absolute;
+    right: 0px;
 }
 
 .history-element{
 	line-height: 30px;
-}
 
+}
+.history-element>span{
+	width:100%;
+	display: inline-block;
+}
 .opacity{
         -webkit-animation: opacity 0.3s linear;
         animation: opacity 0.3s linear;
@@ -248,10 +254,9 @@ header strong {
     width: 100%;
     margin-top: 3px;
     margin-bottom: 3px;
-
     background-color: #fff;
-
     link-height: 20px;
+    position: relative;
 }
 #serachs
 {
