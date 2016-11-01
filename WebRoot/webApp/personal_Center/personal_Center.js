@@ -33,7 +33,7 @@ function userInfo() {
 					console.log(url);
 					console.log(newurl);
 					$("#acc-icon").attr("src", newurl);
-					$("#userName").html(list[0].userLoginName);
+					$("#userName").html(list[0].nickname);
 				}
 			});
 }

@@ -34,6 +34,7 @@ body {
 
 #context {
 	margin-top:55px;
+	background-color: white;
 }
 
 .list {
@@ -47,6 +48,18 @@ body {
 
 .msg {
 	margin-top: 5px;
+	width:90%;
+	margin-left:5%;
+	border-bottom:2px solid rgb(224,222,226);
+}
+
+#top_pic{
+	height:70px;
+	line-height:70px;
+}
+
+#bottom_list{
+	border-bottom:0px;
 }
 
 img {
@@ -59,7 +72,7 @@ img {
 	float: right;
 	height: 40px;
 	width: 40px;
-	padding: 5px 10px 5px 5px;
+	padding: 15px 10px 15px 5px;
 }
 
 .detail_msg {
