@@ -1,8 +1,6 @@
-/DataBase
-/META-INF
-/cn
 /com
-/config
 /controller
 /servlet
 /test
+/cn
+/DataBase
