@@ -127,7 +127,7 @@ function collect(){
 			success : function(data) {
 				   if(data != null && data != ""){
 					   	console.log(data);
-					   	switch("1"){
+					   	switch(data){
 					   	case "1":
 					   		document.getElementById("star").src = "img/collect.png";
 					   		alert("跟踪成功");
