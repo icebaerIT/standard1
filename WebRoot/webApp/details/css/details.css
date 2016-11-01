@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 /* 	font-family: 'Microsoft YaHei' ! important; */
-	font-size: 18px;
+	font-size: 16px;
 }
 
 
@@ -124,17 +124,18 @@ p{
 .info-title{
 	font-size: 20px;	
 	margin-left: 5px;
+	vertical-align: middle;
 }
-/* .info-title>span{
-	line-height: 20px;
-} */
+.info-title>span{
+	vertical-align: middle;
+}
 .info-title>img{
-	width:20px;
+	width:25px;
 	
 }
 
 .text-top-align{
-	width:15px;
+	width:16px;
 	margin:0px 12px;
 	vertical-align:text-top;
 	float:left;
