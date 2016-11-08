@@ -17,8 +17,10 @@ import DataBase.ConnectOracle;
  *
  */
 public class getLoginName {
+	
 	public static Map<String, Object> getLoginNameing(HttpSession session){
 		
+		System.out.println("获取用户信息");
 		String openid = (String) session.getAttribute("openID");
 /*		String openid = "obFKEt1U4KmC2E7Cht75WZJHJch8";*/
 		
@@ -32,11 +34,14 @@ public class getLoginName {
 			try {
 				
 				Statement statement = connectDataBase.getData().createStatement();
-				String sql = "select login_name from t_nv_user where open_id = '"+openid+"' and source_link = 'weixin' ";
+				String sql = "select login_name,OPEN_CHECK from t_nv_user where open_id = '"+openid+"' and source_link = 'weixin'";
 				System.out.println(sql);
 		        ResultSet rs = statement.executeQuery(sql);
 		        
-		        while(rs.next() && rs != null){                  
+		        while(rs.next() && rs != null){    
+		        	session.setAttribute("OPEN_CHECK", rs.getString("OPEN_CHECK"));
+		        	session.setAttribute("ID",rs.getString("login_name"));
+		        	map.put("OPEN_CHECK", rs.getString("OPEN_CHECK"));
 					map.put("login_name", rs.getString("login_name"));
 					System.out.println(rs.getString("login_name"));
 					map.put("OK", "true");

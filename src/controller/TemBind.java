@@ -16,6 +16,7 @@ import DataBase.ConnectOracle;
  */
 public class TemBind {
 public static boolean temBinding(HttpSession session,String ID){
+		System.out.println("绑定临时账号");
 		String openid = (String) session.getAttribute("openID");
 		//连接数据库
 		ConnectOracle connectDataBase = new ConnectOracle();
@@ -28,6 +29,7 @@ public static boolean temBinding(HttpSession session,String ID){
 		        ResultSet rs = statement.executeQuery(sql);
 		 		rs.close();
 		 		connectDataBase.getData().close();
+		 		getLoginName.getLoginNameing(session);//绑定完成重新读取数据
 		 		return true;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
