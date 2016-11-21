@@ -5,22 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="format-detection" content="telephone=no" />
 <title>我的消息</title>
 <link rel="stylesheet" type="text/css" href="myNews.css">
 </head>
 <body>
 	<div id="head">
-		<img id="back" src="img/back2.png" onclick="pre()"><Strong
+		<img class="back" src="img/back2.png" onclick="back(this)"><Strong
 			class="name">我的消息</Strong>
 	</div>
-	<div id="context">
-		<p id="first_msg" class="msg">我的消息是什么</p>
-		<p class="msg">我的消息是什么</p>
-	</div>
+	<div id="empty" class="bg"><div>没有推送消息</div></div>
+	<ul id="context">
+		<!-- <li class="msg"><span id="stand_id">XXX</span>标准有新的推送消息</li> -->
+	</ul>
+	<div class="main"></div>
+	<script type="text/javascript" src="../../frame/jquery/jquery-2.1.0.js"></script>
+	<script type="text/javascript" src="myNews.js"></script>
 </body>
-<script type="text/javascript">
-function pre(){
-	history.go(-1);
-}
-</script>
 </html>
