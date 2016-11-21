@@ -22,6 +22,9 @@ document.getElementById("search").onclick =
 function load_history(){//读取历史记录并且打印
 	document.getElementById("history-element-list").innerHTML = h_history; 
 	var element_history = $(".history-element>span");
+	
+	
+	
 	for(var i = 0; i < element_history.length; i++){
 		element_history[i].onclick = function(){
 			//还是历史搜索

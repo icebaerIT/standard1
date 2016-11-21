@@ -153,6 +153,7 @@ function serach(type){
 	var serach = $("#serachkeyword").val();
 	if(type == 3){
 		serach = serach_history;
+		console.log("搜索历史记录");
 	}
 	var theserach  = sessionStorage.getItem("simpleSearch_keyword");
 //	存历史记录
@@ -163,7 +164,7 @@ function serach(type){
 		console.log("隐藏历史");
 		$("#history").hide();
 		//展示读取画面
-		if(type == 0){
+		if(type == 0 || type == 3 ){
 			$("#loading").show();
 			thePage == 1;
 			console.log("读取画面展开");
@@ -209,9 +210,11 @@ function onlyNum(){
 
 
 
-$(document).ready(function(){
+$(document).ready(function(){//判断是否曾经搜索过
 	var keyword = sessionStorage.getItem("simpleSearch_keyword");
 	if(keyword != null){
+		console.log("隐藏历史");
+		$("#history").hide();
 		$("#serachkeyword").val(keyword);
 /*		$("#serachkeyword").css({
 			"font-size": "30px",

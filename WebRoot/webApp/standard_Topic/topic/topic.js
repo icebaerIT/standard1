@@ -39,6 +39,7 @@ function showContext() {
 				traditional : true,
 				async : false,
 				success : function(data) {
+					console.log(data);
 //					alert("come in");
 					$("#hah").css("display","none");
 					if (data == "" || data == undefined) {
