@@ -111,7 +111,7 @@ function upload(this_keyword){
 				$(".pull").fadeIn(1000);
 				$(".pull").fadeOut(1000);
 				return;
-			}else if(page == 1 && detail.length == 0 || this_data[0].totalPage == 0){
+			}else if((page == 1 && detail.length == 0 )|| this_data[0].totalPage == 0){
 				$("#empty").show();
 			}
 			update(detail);

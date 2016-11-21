@@ -111,19 +111,7 @@ function collect(){
 		   		returnType:returnType
 		   	},
 		   	traditional : true,
-			async : true,
-			success : function(data) {}
-		   });
-	   $.ajax({
-		   	url: '../../servlet/GetPortServlet',
-		   	type: 'POST',
-		   	data: {
-		   		portName:portName,
-		   		parameterList: id,
-		   		returnType:returnType
-		   	},
-		   	traditional : true,
-			async : true,
+			async : false,
 			success : function(data) {
 				   if(data != null && data != ""){
 					   	console.log(data);
