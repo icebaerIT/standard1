@@ -50,57 +50,46 @@ public class IntoAdvencedSearch extends HttpServlet {
 		HttpSession session = request.getSession();
 		ResourceBundle Bundle = ResourceBundle.getBundle("config.AppConfig");
 		if(session.getAttribute("ID") == null){
-			String get_access_token_url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code"; 
-			String get_userinfo="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+			String get_access_token_url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code"; //微信获取openid接口地址
+			String get_userinfo="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";//微信获取用户详细信息接口地址
 	
 			// 将请求、响应的编码均设置为UTF-8（防止中文乱码） 
 			request.setCharacterEncoding("UTF-8"); 
 			response.setCharacterEncoding("UTF-8");
 			
-			String code=request.getParameter("code");
-			System.out.println("我是获取用户信息的get方法");
-			System.out.print("我是code:");
-			System.out.println(code);
-			System.out.print("我是state:");
-			System.out.println(request.getParameter("state"));
+			String code=request.getParameter("code");//获取openid密码
 			
-			get_access_token_url=get_access_token_url.replace("APPID", "wx67dfa21760b77ef6"); 
-			get_access_token_url=get_access_token_url.replace("SECRET", "b907671e3beeb7722371f8b6b8669e82"); 
+			//将获取到的密码填入接口中
+			get_access_token_url=get_access_token_url.replace("APPID", "wx67dfa21760b77ef6"); //公众号接口调用ID
+			get_access_token_url=get_access_token_url.replace("SECRET", "b907671e3beeb7722371f8b6b8669e82");//公众号接口调用密码
 			get_access_token_url=get_access_token_url.replace("CODE", code);
 			String json=HttpUtil.getUrl(get_access_token_url);
-			System.out.print("我是第一次:");
-		    System.out.println(json);
 			
-			JSONObject jsonObject=JSONObject.fromObject(json); 
+			JSONObject jsonObject=JSONObject.fromObject(json); //格式转化
 			
+			//获取openid
 			String access_token=jsonObject.getString("access_token"); 
 			String openid=jsonObject.getString("openid");
 			
+			//获取openid填入用户详情接口中
 			get_userinfo=get_userinfo.replace("ACCESS_TOKEN", access_token); 
-			get_userinfo=get_userinfo.replace("OPENID", openid); 
+			get_userinfo=get_userinfo.replace("OPENID", openid);
 			
+			
+			//获取并保存用户信息数据和openid
 			String userInfoJson=HttpUtil.getUrl(get_userinfo); 
-			System.out.print("我是第二次:");
-			System.out.println(userInfoJson);
 			JSONObject userInfoJO=JSONObject.fromObject(userInfoJson);
 			session.setAttribute("userInfo", userInfoJson);
 			session.setAttribute("openID",userInfoJO.getString("openid"));
 			
 			//查看此openid是否已经注册
-			String a = userInfoJO.getString("openid");
-			
 			if(userInfoJO.getString("openid") != null){//如果openid取到了
 					
-					Map<String, Object> map = getLoginName.getLoginNameing(session);
-					
+					Map<String, Object> map = getLoginName.getLoginNameing(session);	
 					if(map.get("login_name") == null){
-	/*					response.sendRedirect(Bundle.getString("account"));*/
-	/*					response.sendRedirect(Bundle.getString("weixinOpenID"));*/
 						System.out.println("用户未绑定=========");
 					}else{
 						System.out.println("用户已经绑定");
-	/*					session.setAttribute("ID",map.get("login_name"));*/
-	/*					response.sendRedirect(Bundle.getString("personCenter"));*/
 					}
 					session.setAttribute("ID",map.get("login_name"));
 					response.sendRedirect(Bundle.getString("advencedSearch"));

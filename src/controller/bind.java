@@ -31,8 +31,10 @@ public class bind {
 			}
 			try {
 				Statement statement = connectDataBase.getData().createStatement();
+				String Dsql = "DELETE FROM t_nv_user WHERE OPEN_ID = '"+openid+"'";
 				String sql = "update t_nv_user set open_id = '"+openid+"', source_link = 'weixin', open_check = 1 where login_name = '"+args+"'";
 				System.out.println(sql);
+				ResultSet Drs = statement.executeQuery(Dsql);
 		        ResultSet rs = statement.executeQuery(sql);
 		 		rs.close();
 		 		connectDataBase.getData().close();

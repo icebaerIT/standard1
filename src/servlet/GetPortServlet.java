@@ -25,6 +25,7 @@ import org.apache.axis2.rpc.client.RPCServiceClient;
 import org.apache.commons.lang.ArrayUtils;
 
 import controller.bind;
+import controller.getLoginName;
 import controller.register;
 
 
@@ -222,6 +223,7 @@ public class GetPortServlet extends HttpServlet {
 			break;
 		case "base_loginName":
 			
+			System.out.println("用户密码账号验证 base_loginName");
 			classes = new Class[] { String.class };
 			String returnName;
 			returnName = (String) (serviceClient.invokeBlocking(opAddEntry,
@@ -234,10 +236,11 @@ public class GetPortServlet extends HttpServlet {
 				Boolean returnBind = bind.binding(parameterList2[0].toString(), session);
 				System.out.println("boolean---------");
 				System.out.println(returnBind.toString());
+				getLoginName.getLoginNameing(session);
 				out.write(returnBind.toString());
+			}else{
+				out.write(returnName);
 			}
-			out.write(returnName);
-			
 			break;
 		case "base_register":
 			
@@ -259,6 +262,31 @@ public class GetPortServlet extends HttpServlet {
 			String flagType ;
 			flagType = (String)(serviceClient.invokeBlocking(opAddEntry, parameterList, classes)[0]);			
 			out.write(flagType);
+			break;
+		case "isBind"://用户是否已经绑定或者创建临时账号
+			//session.setAttribute("ID","obFKEt1U4KmC2E7Cht75WZJHJch8");
+			System.out.println("账号绑定判定:"+session.getAttribute("ID"));
+			Map<String,Object> isBindMap = new HashMap<String,Object>();
+			if(session.getAttribute("ID") != null){//用户绑定或者创建了临时账号
+				System.out.println("我进来了:"+session.getAttribute("OPEN_CHECK"));
+				if(session.getAttribute("OPEN_CHECK").equals("1")){//用户已经绑定
+					System.out.println("绑定账号");
+					isBindMap.put("ID", session.getAttribute("ID"));
+					isBindMap.put("isBind", "true");
+					
+				}else{//用户没有绑定
+					System.out.println("临时账号");
+					isBindMap.put("ID", "临时账号");
+					isBindMap.put("isBind", "false");
+
+				}
+				
+			}else{
+				System.out.println("啥都没有");
+				isBindMap.put("ID", "啥都没有");
+				isBindMap.put("isBind", "NoAll");
+			}
+			out.write(JSONObject.fromObject(isBindMap).toString());	
 			break;
 		default:out.write( "noReturnType");
 		

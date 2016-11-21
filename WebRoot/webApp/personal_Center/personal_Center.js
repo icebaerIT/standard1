@@ -43,7 +43,7 @@ function show_detail() {
 }
 // 跳转到账户绑定界面
 function bind_Account() {
-	window.location.href = "/standard/webApp/account/account.html";
+	window.location.href = "/standard/webApp/account/account.html?bind=OK";
 }
 // 跳转到留言界面
 function msg_board() {
